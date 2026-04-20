@@ -212,7 +212,7 @@
     .sec-h { font-family:'Noto Serif TC',serif; font-size:clamp(24px,2.6vw,36px); font-weight:300; color:var(--text); letter-spacing:.08em; line-height:1.35; }
     .sec-notice { font-family:'Geist',sans-serif; font-size:12px; font-weight:500; color:var(--text); background:var(--yellow-soft); border-left:2px solid var(--yellow); padding:8px 16px; line-height:1.6; max-width:280px; }
     .rooms-note { font-size:14px; font-weight:400; color:var(--text-3); line-height:1.9; margin:-28px 0 22px; }
-    .room-selected-bar { position:fixed; bottom:0; left:0; right:0; z-index:800; display:flex; align-items:center; justify-content:space-between; gap:16px; background:rgba(17,16,13,.82); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); color:#fff; padding:14px 28px; cursor:pointer; font-size:13px; font-weight:500; opacity:0; visibility:hidden; pointer-events:none; transform:translateY(100%); transition:opacity .28s ease, visibility .28s ease, transform .28s cubic-bezier(.25,.46,.45,.94); }
+    .room-selected-bar { position:fixed; bottom:0; left:0; right:0; z-index:800; display:flex; align-items:center; justify-content:space-between; gap:16px; background:rgba(17,16,13,.82); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); color:#fff; padding:14px 28px calc(14px + env(safe-area-inset-bottom,0px)); cursor:pointer; font-size:13px; font-weight:500; opacity:0; visibility:hidden; pointer-events:none; transform:translateY(100%); transition:opacity .28s ease, visibility .28s ease, transform .28s cubic-bezier(.25,.46,.45,.94); }
     .room-selected-bar.visible { opacity:1; visibility:visible; pointer-events:auto; transform:translateY(0); }
     .room-selected-bar .go { font-family:'Geist',sans-serif; font-size:10px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:rgba(255,255,255,.6); white-space:nowrap; }
     .rg { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:24px 20px; }
@@ -374,26 +374,59 @@
       background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23746E66' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
       background-repeat:no-repeat; background-position:right 16px center; }
     input[type="date"] {
-      padding-right:44px;
-      position:relative;
-      display:block;
-      line-height:50px;
-      text-align:left;
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      opacity:0;
+      cursor:pointer;
+      z-index:2;
+      -webkit-appearance:none;
+      appearance:none;
     }
     input[type="date"]::-webkit-calendar-picker-indicator {
-      cursor:pointer;
-      opacity:0.55;
       position:absolute;
-      right:14px;
-      top:50%;
-      transform:translateY(-50%);
-      margin:0;
-      display:block;
+      inset:0;
+      width:100%;
+      height:100%;
+      opacity:0;
+      cursor:pointer;
     }
-    input[type="date"]::-webkit-date-and-time-value { text-align:left; }
-    input[type="date"]::-webkit-datetime-edit { padding:0; color:inherit; }
-    input[type="date"]::-webkit-datetime-edit-fields-wrapper { padding:0; }
-    input[type="date"]::-webkit-datetime-edit-text { color:inherit; padding:0 1px; }
+    .date-input-wrap {
+      position:relative;
+      width:100%;
+      height:50px;
+      border-bottom:1px solid var(--line);
+      background:var(--white);
+      overflow:hidden;
+    }
+    .date-display {
+      height:100%;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:0 16px;
+      color:var(--text);
+      background:var(--white);
+    }
+    .date-display-value {
+      flex:1;
+      min-width:0;
+      font-size:15px;
+      font-weight:400;
+      line-height:1;
+      color:var(--text);
+      text-align:left;
+    }
+    .date-display-value.is-prefill { color:var(--text-4); }
+    .date-display-icon {
+      width:18px;
+      height:18px;
+      flex-shrink:0;
+      color:var(--text-4);
+      opacity:.72;
+    }
     textarea { min-height:92px; resize:vertical; border:1px solid var(--line); }
     .rdsp { border-bottom:1px solid var(--line); padding:14px 16px; min-height:50px; display:flex; align-items:center; font-size:15px; font-weight:500; color:var(--text-4); }
     .rdsp.ok { border-bottom-color:var(--yellow); color:var(--text); }
@@ -659,7 +692,7 @@
       .room-select-preview img { height:100%; }
       .room-preview-badge { font-size:10px; letter-spacing:.08em; }
       .room-select-left .rdsp { display:none; }
-      .back-top { right:16px; bottom:150px; }
+      .back-top { right:16px; bottom:calc(150px + env(safe-area-inset-bottom,0px)); }
       /* Form step bar */
       .form-step-bar { flex-wrap:wrap; gap:8px; margin-bottom:20px; }
       /* 房型卡片觸控 */
@@ -670,6 +703,7 @@
       /* Modal close */
       .rmo-close { width:40px; height:40px; font-size:22px; }
       .sub-btn { margin-top:0px; }
+      .room-selected-bar { padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px)); }
       /* 交通區段 */
       .tg { grid-template-columns:1fr; margin-top:0; }
       .tc { padding:28px 0; border-right:none; border-bottom:1px solid rgba(255,255,255,.07); }
@@ -980,8 +1014,20 @@
        <div class="fgi full">
         <label>入住 / 退房日期<span class="req">*</span></label>
         <div class="drow">
-         <input id="checkIn" name="checkIn" type="date" value="2026-05-12" min="2026-05-12" max="2026-05-13" class="date-prefill">
-         <input id="checkOut" name="checkOut" type="date" value="2026-05-14" min="2026-05-13" max="2026-05-14" class="date-prefill">
+         <div class="date-input-wrap">
+          <div class="date-display">
+           <span class="date-display-value is-prefill" id="checkInDisplay">2026/05/12</span>
+           <svg class="date-display-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 2v3M17 2v3M4 8h16M6 5h12a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <input id="checkIn" name="checkIn" type="date" value="2026-05-12" min="2026-05-12" max="2026-05-13" class="date-prefill">
+         </div>
+         <div class="date-input-wrap">
+          <div class="date-display">
+           <span class="date-display-value is-prefill" id="checkOutDisplay">2026/05/14</span>
+           <svg class="date-display-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 2v3M17 2v3M4 8h16M6 5h12a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <input id="checkOut" name="checkOut" type="date" value="2026-05-14" min="2026-05-13" max="2026-05-14" class="date-prefill">
+         </div>
         </div>
         <span class="fhint">本次訂房限 <strong>5/12（二）、5/13（三）、5/14（四）</strong>，論壇日為 5/13（三）。入住及退房日期限定於此區間內。</span>
        </div>
@@ -1948,9 +1994,25 @@
     });
 
     // ── 入住/退房預設日期：使用者修改後恢復正常色 ──
+    function formatDateDisplay(value) {
+      if (!value) return '';
+      return value.replace(/-/g, '/');
+    }
+
     ['checkIn','checkOut'].forEach(function(id) {
       var el = document.getElementById(id);
-      if (el) el.addEventListener('change', function() { this.classList.remove('date-prefill'); });
+      var display = document.getElementById(id + 'Display');
+      if (!el || !display) return;
+      function syncDateDisplay() {
+        display.textContent = formatDateDisplay(el.value);
+        display.classList.toggle('is-prefill', el.classList.contains('date-prefill'));
+      }
+      el.addEventListener('change', function() {
+        this.classList.remove('date-prefill');
+        syncDateDisplay();
+      });
+      el.addEventListener('input', syncDateDisplay);
+      syncDateDisplay();
     });
 
     // ── 設施圖示對照表 ──
