@@ -85,10 +85,14 @@
     #hdr.solid .hdr-nav a { color:var(--text-2); text-shadow:none; }
     .hdr-nav a:hover { color:var(--yellow); }
     .hdr-actions { display:flex; align-items:center; gap:14px; }
-    .hdr-reserve {
+    .hdr-back, .hdr-reserve {
       font-family:'Geist',sans-serif; font-size:10px; font-weight:600; letter-spacing:.18em; text-transform:uppercase;
-      background:var(--yellow); color:var(--text); padding:0 20px; transition:.2s;
-      display:inline-flex; align-items:center; justify-content:center; height:38px; flex-shrink:0; white-space:nowrap;
+      padding:0 20px; height:38px; display:inline-flex; align-items:center; justify-content:center;
+      flex-shrink:0; white-space:nowrap; text-decoration:none; line-height:1; box-sizing:border-box;
+    }
+    .hdr-reserve {
+      background:var(--yellow); border:1px solid transparent; color:var(--text);
+      transition:background .38s cubic-bezier(.4,0,.2,1), color .38s cubic-bezier(.4,0,.2,1), border-color .38s cubic-bezier(.4,0,.2,1), opacity .2s, transform .2s;
     }
     .hdr-reserve:hover { opacity:.88; transform:translateY(-1px); }
 
@@ -206,7 +210,7 @@
     .room-selected-bar.visible { opacity:1; visibility:visible; pointer-events:auto; transform:translateY(0); }
     .room-selected-bar .go { font-family:'Geist',sans-serif; font-size:10px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:rgba(255,255,255,.6); white-space:nowrap; }
     .rg { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:24px 20px; }
-    .room-card { background:var(--white); overflow:hidden; cursor:pointer; border:1px solid rgba(17,16,13,.07); box-shadow:0 2px 12px rgba(17,16,13,.055), 0 1px 3px rgba(17,16,13,.04); transition:all .32s cubic-bezier(.25,.46,.45,.94); }
+    .room-card { background:var(--white); overflow:hidden; cursor:pointer; border:1px solid rgba(17,16,13,.07); box-shadow:0 2px 12px rgba(17,16,13,.055), 0 1px 3px rgba(17,16,13,.04); transition:all .32s cubic-bezier(.25,.46,.45,.94); display:flex; flex-direction:column; }
     .room-card:hover { background:var(--bg); box-shadow:0 10px 36px rgba(17,16,13,.11), 0 3px 8px rgba(17,16,13,.06); transform:translateY(-4px); }
     .room-card.active { background:var(--bg); box-shadow:0 10px 36px rgba(17,16,13,.11), 0 3px 8px rgba(17,16,13,.06); transform:translateY(-4px); }
     .room-card .ri-ctrl { background:transparent; }
@@ -290,39 +294,57 @@
     .rmo-orig { font-family:'Geist',sans-serif; font-size:10px; color:var(--text-4); text-decoration:line-through; margin-top:1px; }
     .rmo-add-btn { background:var(--text); color:var(--white); border:none; font-family:'Geist',sans-serif; font-size:11px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; padding:13px 22px; cursor:pointer; transition:.2s; white-space:nowrap; }
     .rmo-add-btn:hover { background:var(--yellow); color:var(--text); }
-    .rmo-qty { display:none; align-items:stretch; border:2px solid var(--yellow); }
-    .rmo-qty-btn { padding:12px 18px; background:transparent; border:none; cursor:pointer; font-size:17px; font-weight:700; color:var(--text); font-family:'Geist',sans-serif; transition:.15s; line-height:1; }
+    .rmo-qty { display:none; flex:1 1 0%; min-width:160px; align-items:stretch; border:2px solid var(--yellow); min-height:50px; }
+    .rmo-qty-btn { flex:0 0 48px; padding:0; background:transparent; border:none; cursor:pointer; font-size:20px; font-weight:700; color:var(--text); font-family:'Geist','Noto Sans TC',sans-serif; transition:.15s; line-height:1; display:flex; align-items:center; justify-content:center; }
     .rmo-qty-btn:hover { background:rgba(17,16,13,.07); }
     .rmo-qty-btn:disabled { opacity:.3; cursor:default; }
-    .rmo-qty-num { display:flex; align-items:center; justify-content:center; font-family:'Geist',sans-serif; font-weight:700; font-size:15px; color:var(--text); min-width:44px; border-left:1px solid var(--line-2); border-right:1px solid var(--line-2); }
+    .rmo-qty-num { flex:1; display:flex; align-items:center; justify-content:center; font-family:'Geist',sans-serif; font-weight:700; font-size:15px; color:var(--text); min-width:0; border-left:1px solid var(--line-2); border-right:1px solid var(--line-2); }
+    .rmo-goto-form { display:none; flex:1 1 0%; min-width:0; min-height:50px; font-family:'Geist',sans-serif; font-size:11px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--text-2); text-decoration:none; cursor:pointer; background:transparent; border:1px solid var(--line); padding:0 18px; transition:background .2s, border-color .2s, color .2s; white-space:nowrap; justify-content:center; overflow:hidden; }
+    .rmo-goto-form:hover { background:var(--yellow); border-color:var(--yellow); color:var(--text); }
+    .rmo-actions { display:flex; align-items:stretch; gap:8px; }
+    .rmo-goto-form.visible { display:inline-flex; align-items:center; gap:7px; flex:1; }
     @media (max-width:600px) {
       .room-modal-overlay { padding:0; align-items:flex-end; }
       .room-modal { max-width:100%; max-height:93vh; }
+      .rmo-carousel { height:clamp(220px, 34vh, 300px); }
+      .rmo-body { padding:18px 18px 14px; }
       .rmo-cols { grid-template-columns:1fr; }
       .rmo-col-right { border-left:none; padding-left:0; border-top:1px solid var(--line-2); padding-top:14px; margin-top:4px; }
       .rmo-amenities { grid-template-columns:repeat(2,1fr); }
       .rmo-ftr-bar { flex-direction:column; align-items:stretch; padding:12px 18px; }
-      .rmo-ftr-bar > div { display:flex; align-items:baseline; gap:10px; }
+      .rmo-price-div { display:flex; align-items:baseline; gap:10px; }
+      .rmo-actions { flex-direction:column; }
+      .rmo-qty { flex:none; width:100%; }
+      .rmo-goto-form { flex:none; }
+      .rmo-qty-btn { flex:0 0 64px; display:flex; align-items:center; justify-content:center; padding:12px 0; }
+      .rmo-qty-num { flex:1; min-width:0; text-align:center; justify-content:center; }
       .rmo-add-btn { text-align:center; padding:14px; }
+      .rmo-goto-form.visible { justify-content:center; width:100%; }
     }
     .sold-out { position:absolute; inset:0; background:rgba(17,16,13,.56); color:#fff; display:flex; align-items:center; justify-content:center; font-family:'Noto Serif TC',serif; font-size:18px; letter-spacing:.24em; }
-    .rb { padding:12px 24px 20px; border-bottom:1px solid var(--line-2); }
+    .rb { padding:12px 24px 20px; border-bottom:1px solid var(--line-2); flex:1; }
     .r-en { font-family:'Cormorant Garamond',serif; font-size:14px; font-style:italic; letter-spacing:.1em; color:var(--text-4); margin-bottom:6px; }
     .rn { font-family:'Noto Serif TC',serif; font-size:22px; font-weight:400; color:var(--text); margin-bottom:10px; letter-spacing:.06em; }
-    .rspecs { display:flex; gap:16px; flex-wrap:wrap; margin-bottom:10px; }
+    .rspecs { display:flex; gap:16px; flex-wrap:wrap; margin-bottom:10px; align-items:center; }
     .rsp { font-family:'Geist',sans-serif; font-size:12px; font-weight:500; color:var(--text-3); }
     .rdesc { font-size:15px; font-weight:400; color:var(--text-3); line-height:1.9; min-height:72px; }
-    .rftr { display:flex; justify-content:space-between; align-items:flex-end; gap:16px; padding:18px 24px 20px; }
+    .rftr { display:flex; justify-content:space-between; align-items:flex-end; gap:16px; padding:18px 24px 16px; }
+    .room-card.active .rftr { padding-bottom:12px; }
     .price-lbl { font-family:'Geist',sans-serif; font-size:11px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--text-4); margin-bottom:6px; }
     .price-v { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:400; color:var(--text); line-height:1; }
     .price-u { font-size:12px; color:var(--text-4); margin-left:3px; }
+    .price-perks { display:inline-flex; align-items:center; gap:6px; margin-top:9px; margin-bottom:0; }
+    .price-perks-item { display:inline-flex; align-items:center; gap:5px; padding:3px 9px 3px 7px; font-family:'Geist',sans-serif; font-size:10px; font-weight:600; letter-spacing:.07em; color:var(--text-2); background:var(--yellow-soft); border:1px solid rgba(180,160,0,.22); border-radius:2px; line-height:1.4; }
+    .price-perks-icon { width:15px; height:15px; flex-shrink:0; object-fit:contain; display:block; }
     .orig-price { font-family:'Geist',sans-serif; font-size:13px; font-weight:500; color:var(--text-3); text-align:right; line-height:1.6; }
     .orig-price strong { color:var(--text-2); }
     .availability { font-family:'Geist',sans-serif; font-size:11px; color:var(--text-4); margin-top:4px; text-align:right; }
     .sel-btn { display:flex; align-items:center; justify-content:space-between; width:100%; padding:18px 24px; border:none; border-top:1px solid var(--line-2); background:transparent; font-family:'Geist',sans-serif; font-size:12px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--text-3); cursor:pointer; transition:background .2s, color .2s; }
     .room-card:hover .sel-btn { background:var(--text); color:var(--white); }
     .room-counter { display:none; align-items:stretch; border-top:2px solid var(--yellow); }
-    .counter-btn { padding:14px 20px; background:transparent; border:none; border-right:1px solid var(--line-2); cursor:pointer; font-size:17px; font-weight:700; color:var(--text); font-family:'Geist',sans-serif; transition:.15s; }
+    .counter-btn { padding:14px 20px; background:transparent; border:none; cursor:pointer; font-size:20px; font-weight:700; color:var(--text); font-family:'Geist','Noto Sans TC',sans-serif; line-height:1; transition:.15s; }
+    .c-minus { border-right:1px solid var(--line-2); }
+    .c-plus { border-left:1px solid var(--line-2); }
     .counter-btn:hover { background:rgba(17,16,13,.07); }
     .counter-num { flex:1; display:flex; align-items:center; justify-content:center; font-family:'Geist',sans-serif; font-weight:700; font-size:15px; color:var(--text); min-width:48px; }
     .goto-form-btn { padding:0 18px; background:var(--yellow); border:none; border-left:1px solid rgba(17,16,13,.1); cursor:pointer; font-family:'Geist',sans-serif; font-size:10px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--text); white-space:nowrap; transition:.15s; }
@@ -361,16 +383,16 @@
     .room-select-layout.has-preview .room-select-left { width:50%; }
     .room-select-preview {
       width:0; opacity:0; position:relative; flex-shrink:0;
-      padding-left:0; pointer-events:none;
+      padding-left:0; pointer-events:none; align-self:flex-start;
       transition:width .42s cubic-bezier(.4,0,.2,1), opacity .3s .08s ease, padding-left .42s cubic-bezier(.4,0,.2,1);
     }
     .room-select-layout.has-preview .room-select-preview { width:50%; opacity:1; padding-left:16px; pointer-events:auto; }
     .room-preview-inner {
-      overflow:hidden; height:100%; position:relative;
+      overflow:hidden; height:222px; position:relative;
       box-shadow:0 8px 28px rgba(17,16,13,.12), 0 2px 8px rgba(17,16,13,.07);
     }
     .room-select-preview img {
-      width:100%; height:100%; min-height:148px; object-fit:cover; display:block;
+      width:100%; height:100%; object-fit:cover; display:block;
     }
     .room-preview-badge {
       position:absolute; bottom:0; left:0; right:0;
@@ -386,7 +408,7 @@
     .policy-ul { list-style:none; display:flex; flex-direction:column; gap:7px; }
     .policy-ul li { position:relative; padding-left:16px; font-size:13px; font-weight:400; color:var(--text-3); line-height:1.8; }
     .policy-ul li::before { content:'—'; position:absolute; left:0; color:#ffcc03; }
-    .sub-btn { width:100%; padding:18px; background:var(--text); color:var(--white); border:none; margin-top:32px; cursor:pointer; font-family:'Geist',sans-serif; font-size:11px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; display:flex; align-items:center; justify-content:center; gap:14px; }
+    .sub-btn { width:100%; padding:18px; background:var(--text); color:var(--white); border:none; margin-top:10px; cursor:pointer; font-family:'Geist',sans-serif; font-size:11px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; display:flex; align-items:center; justify-content:center; gap:14px; }
     .back-register-btn { display:flex; align-items:center; justify-content:center; width:100%; padding:18px; margin-top:35px; background:transparent; border:1px solid var(--line); color:var(--text-4); font-family:'Geist',sans-serif; font-size:11px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; text-decoration:none; transition:color .2s, border-color .2s; }
     .back-register-btn:hover { color:#ffcc03; border-color:#ffcc03; }
     .rooms-list { display:flex; flex-direction:column; gap:8px; margin-bottom:10px; }
@@ -469,9 +491,10 @@
     .ft-r { font-family:'Geist',sans-serif; font-size:10px; font-weight:500; letter-spacing:.06em; color:rgba(255,255,255,.34); text-align:right; line-height:1.9; }
 
     /* ── 回頂端按鈕（固定在右下角） ── */
-    .back-top { position:fixed; right:22px; bottom:76px; z-index:999; border:none; cursor:pointer; width:52px; height:52px; border-radius:999px; background:rgba(17,16,13,.88); color:#fff; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 24px rgba(0,0,0,.16); opacity:0; pointer-events:none; transform:translateY(10px); transition:.28s; }
+    .back-top { position:fixed; right:22px; bottom:150px; z-index:999; border:none; cursor:pointer; width:52px; height:52px; border-radius:999px; background:rgba(17,16,13,.94); color:#fff; display:flex; align-items:center; justify-content:center; box-shadow:0 10px 24px rgba(0,0,0,.16); opacity:0; pointer-events:none; transform:translateY(10px); transition:.28s; }
     .back-top.show { opacity:1; pointer-events:auto; transform:translateY(0); }
     .back-top::before { content:''; width:10px; height:10px; border-left:1.5px solid currentColor; border-top:1.5px solid currentColor; transform:translateY(3px) rotate(45deg); }
+    .back-top.invert {background: rgba(255,255,255,.80);color: var(--text);}
 
     /* ── 後台管理面板（登入頁 + 主介面） ── */
     /* ── 漢堡選單按鈕 ── */
@@ -533,13 +556,14 @@
     @media (max-width:1100px) {
       .hdr-nav { gap:18px; }
       .hdr-nav a { letter-spacing:.08em; }
-      .hdr-reserve { padding:9px 14px; }
+      .hdr-back, .hdr-reserve { padding:0 14px; }
     }
 
     /* ── 響應式斷點：平板（980px 以下） ── */
     @media (max-width:980px) {
       .hdr-burger { display:flex; }
       .hdr-nav { display:none; }
+      .room-preview-inner { height:222px; }
       .feature-content, .feature-block.reverse .feature-content { grid-template-columns:1fr; direction:ltr; }
       .feature-bg { height:67%; }
       .feature-img, .feature-block.reverse .feature-img { padding:0 20px; transform:translateY(-8px); }
@@ -560,11 +584,15 @@
     /* ── 響應式斷點：手機（640px 以下） ── */
     @media (max-width:640px) {
       /* Header */
-      #hdr { padding:0 16px; height:60px; }
+      #hdr { padding:0 10px; height:60px; }
       #hdr.solid { height:54px; }
+      .hdr-logo { flex:0 1 auto; min-width:0; }
+      .hdr-actions { margin-left:auto; gap:7px; flex-shrink:0; }
       .logo-words { display:none; }
-      .hdr-reserve { padding:9px 12px; font-size:10px; }
-      .hdr-back { display:none; }
+      .music-player-btn { width:34px; height:34px; font-size:14px; }
+      .hdr-back, .hdr-reserve { padding:0 12px; height:36px; font-size:10px; letter-spacing:.1em; }
+      .hdr-burger { width:36px; height:36px; padding:4px; }
+      .hdr-back { display:inline-flex; }
       .hero-center { transform:translateY(-130px); }
       .hero-brand-en .hero-brand-break-mobile { display:block; }
       .intro-overline { font-size:10px; letter-spacing:.16em; gap:10px; white-space:nowrap; }
@@ -601,8 +629,12 @@
       /* 房型表單選擇 */
       .room-select-layout { flex-direction:column; }
       .room-select-layout.has-preview .room-select-left { width:100%; }
-      .room-select-preview, .room-select-layout.has-preview .room-select-preview { width:100%; height:160px; padding-left:0 !important; padding-top:12px; }
-      .room-select-preview img { height:160px; min-height:160px; }
+      .room-select-preview, .room-select-layout.has-preview .room-select-preview { width:100%; height:auto; opacity:1; padding-left:0 !important; padding-top:12px; pointer-events:auto; }
+      .room-preview-inner { height:200px; }
+      .room-select-preview img { height:100%; }
+      .room-preview-badge { font-size:10px; letter-spacing:.08em; }
+      .room-select-left .rdsp { display:none; }
+      .back-top { right:16px; bottom:150px; }
       /* Form step bar */
       .form-step-bar { flex-wrap:wrap; gap:8px; margin-bottom:20px; }
       /* 房型卡片觸控 */
@@ -612,6 +644,7 @@
       .accord-hd { min-height:48px; }
       /* Modal close */
       .rmo-close { width:40px; height:40px; font-size:22px; }
+      .sub-btn { margin-top:0px; }
       /* 交通區段 */
       .tg { grid-template-columns:1fr; margin-top:0; }
       .tc { padding:28px 0; border-right:none; border-bottom:1px solid rgba(255,255,255,.07); }
@@ -643,6 +676,11 @@
       .status-select { flex:1; min-width:0; }
     }
 
+    @media (max-width:430px) {
+      .hdr-actions { gap:4px; }
+      .hdr-back, .hdr-reserve { padding:0 8px; height:34px; font-size:8px; letter-spacing:.08em; }
+    }
+
     /* ── 背景音樂播放按鈕 ── */
     .music-player-btn {
       width:34px; height:34px; border-radius:50%; flex-shrink:0;
@@ -658,12 +696,9 @@
     .music-player-btn.playing:hover,
     #hdr.solid .music-player-btn.playing:hover { background:var(--yellow); border-color:var(--yellow); color:var(--text); opacity:.88; }
     .hdr-back {
-      font-family:'Geist',sans-serif; font-size:10px; font-weight:600; letter-spacing:.18em; text-transform:uppercase;
       background:transparent; border:1px solid rgba(255,255,255,.22); color:rgba(255,255,255,.9);
-      padding:0 20px; cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; justify-content:center;
-      height:38px; flex-shrink:0;
+      cursor:pointer;
       transition:color .38s cubic-bezier(.4,0,.2,1), border-color .38s cubic-bezier(.4,0,.2,1), opacity .2s, transform .2s;
-      white-space:nowrap;
     }
     #hdr.solid .hdr-back { color:var(--text-4); border-color:var(--line); }
     .hdr-back:hover { color:var(--yellow); border-color:var(--yellow); opacity:.88; transform:translateY(-1px); }
@@ -704,7 +739,7 @@
     <div class="hdr-actions">
      <button class="music-player-btn" id="musicPlayerBtn" aria-label="播放背景音樂">♫</button>
      <a href="https://boptaipei.github.io/2026BOC/" class="hdr-back">商明領袖論壇報名頁</a>
-     <a href="#booking-form" class="hdr-reserve">提交住宿需求</a>
+     <a href="#rooms" class="hdr-reserve">住宿方案</a>
      <button class="hdr-burger" id="hdrBurger" aria-label="開啟選單" aria-expanded="false">
       <span></span><span></span><span></span>
      </button>
@@ -871,7 +906,7 @@
        📌 需求收集制<br>送出後由商明專人協助訂房
       </div>
      </div>
-     <p class="rooms-note">以下均為商明特約優惠價，雙人房計費。選擇房型後，可點擊下方提示列，或直接點擊該房卡底部的黃色按鈕，前往填寫詳細住宿資料。</p>
+     <p class="rooms-note">以下均為商明特約優惠價，皆含早餐，並提供免費停車。<br>選擇房型後，可點擊下方提示列，或直接點擊該房卡底部的黃色按鈕，前往填寫詳細住宿資料。</p>
      <!-- 房型卡片容器（由 renderRoomGrid() 填入） -->
      <div class="rg" id="roomGrid"></div>
     </div>
@@ -961,6 +996,8 @@
             </button>
             <div class="sub-accord-body" style="display:none">
              <ul class="notes-list">
+              <li><span class="nl-k">早餐</span><span class="nl-v">所有客房優惠價均含早餐</span></li>
+              <li><span class="nl-k">停車</span><span class="nl-v">酒店附設停車場，住宿期間免費停車</span></li>
               <li><span class="nl-k">入住時間</span><span class="nl-v">下午 4:00 後</span></li>
               <li><span class="nl-k">退房時間</span><span class="nl-v">中午 11:00 前</span></li>
               <li><span class="nl-k">備品政策</span><span class="nl-v">自 2023/12/1 起不提供一次性拋棄式備品，僅提供浴巾、毛巾、洗沐二合一、潤髮乳</span></li>
@@ -1157,16 +1194,19 @@
       </div>
       <!-- 底部固定：價格 + 新增按鈕 -->
       <div class="rmo-ftr-bar">
-        <div>
+        <div class="rmo-price-div">
           <p class="rmo-price-lbl">商明特約優惠價 / 晚</p>
           <p class="rmo-price" id="rmoPrice"></p>
           <p class="rmo-orig" id="rmoOrig"></p>
         </div>
-        <button class="rmo-add-btn" id="rmoAddBtn" type="button">加入此房型</button>
-        <div class="rmo-qty" id="rmoQty">
-          <button class="rmo-qty-btn rmo-qty-minus" id="rmoQtyMinus" type="button">－</button>
-          <span class="rmo-qty-num" id="rmoQtyNum">0</span>
-          <button class="rmo-qty-btn rmo-qty-plus" id="rmoQtyPlus" type="button">＋</button>
+        <div class="rmo-actions">
+          <button class="rmo-add-btn" id="rmoAddBtn" type="button">加入此房型</button>
+          <div class="rmo-qty" id="rmoQty">
+            <button class="rmo-qty-btn rmo-qty-minus" id="rmoQtyMinus" type="button">&#8722;</button>
+            <span class="rmo-qty-num" id="rmoQtyNum">0</span>
+            <button class="rmo-qty-btn rmo-qty-plus" id="rmoQtyPlus" type="button">+</button>
+          </div>
+          <button class="rmo-goto-form" id="rmoGotoForm" type="button">前往填寫訂房資料 →</button>
         </div>
       </div>
     </div>
@@ -1184,15 +1224,15 @@
     });
 
     // ── 房型資料（名稱、特約價、官網原價、名額、圖片、英文名、規格、說明） ──
-    const HOTEL_NOTICES = ['入住時間 16:00 後，退房時間 11:00 前。','依菸害防治法，本酒店全面禁菸。','價格及內容有所異動時，不再另行通知。','免費提供嬰兒床、嬰兒澡盆及奶瓶消毒鍋（須事先預定）。','除導盲犬外，酒店禁止攜帶寵物進入。','另有無障礙空間設計客房，歡迎提前預訂。','配合政府政策，酒店自 2023/12/1 起不提供一次性拋棄式備品，僅提供浴巾、毛巾、拖鞋、洗沐二合一、潤髮乳。'];
+    const HOTEL_NOTICES = ['所有客房報價均含早餐，並提供免費停車服務。','入住時間 16:00 後，退房時間 11:00 前。','依菸害防治法，本酒店全面禁菸。','價格及內容有所異動時，不再另行通知。','免費提供嬰兒床、嬰兒澡盆及奶瓶消毒鍋（須事先預定）。','除導盲犬外，酒店禁止攜帶寵物進入。','另有無障礙空間設計客房，歡迎提前預訂。','配合政府政策，酒店自 2023/12/1 起不提供一次性拋棄式備品，僅提供浴巾、毛巾、拖鞋、洗沐二合一、潤髮乳。'];
     const ROOM_DATA = [
-      {name:'標準客房',    price:4950, original:'NT$ 9,600 +10%',  quota:5, image:'https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard/1.jpg', focus:'50% 50%', mobileFocus:'50% 50%', en:'Standard Double Room', tag:'Standard · 11坪',  specs:['一大床','11 坪'], desc:'色調柔和舒適的簡約風格，大片落地窗美景一覽無遺，讓您遠離塵世的喧囂。', images:['https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard/1.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard/2.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard/3.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard/4.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard/5.jpg'], detail:{size:'11.2坪（約 37 m²）',bed:'180×200 cm／一大床',occupancy:'2人，含大人及兒童',childPolicy:'每房至多招待兩位未滿6歲兒童免費入住（標準客房招待乙位）',intro:['色調柔和舒適的簡約風','大片落地窗美景一覽無遺','小黃星弄蝶翻翔，讓您遠離塵世的喧囂。'],amenities:['ADSL / WiFi 寬頻網路','免費無線上網服務','嚴選沐浴組高磅數浴巾組','乾濕分離淋浴浴缸設備','靜音冰箱','智慧型保險箱','43吋壁掛電視','電源控制系統恆溫空調','餐點供應']}},
-      {name:'標準雙床客房', price:4950, original:'NT$ 9,600 +10%',  quota:5, image:'https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard%20twin/1.jpg', focus:'50% 48%', mobileFocus:'52% 46%', en:'Standard Twin Room',   tag:'Twin Standard · 11坪', specs:['二小床','11 坪'], desc:'雙床設計靈活彈性，適合商務夥伴同行，柔和簡約空間讓交流延伸至住宿。', images:['https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard%20twin/1.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard%20twin/2.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard%20twin/3.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard%20twin/4.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard%20twin/5.jpg'], detail:{size:'11.2坪（約 37 m²）',bed:'標準床×2／二小床',occupancy:'2人，含大人及兒童',childPolicy:'兒童同房恕不適用免費方案',intro:['雙床設計靈活彈性','適合商務夥伴或友伴同行','柔和簡約空間，讓交流延伸至住宿'],amenities:['ADSL / WiFi 寬頻網路','免費無線上網服務','嚴選沐浴組高磅數浴巾組','乾濕分離淋浴浴缸設備','靜音冰箱','智慧型保險箱','43吋壁掛電視','電源控制系統恆溫空調','餐點供應']}},
-      {name:'高級客房',    price:5830, original:'NT$ 10,800 +10%', quota:4, image:'https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/superior/1.jpg', focus:'50% 52%', mobileFocus:'54% 48%', en:'Superior Room',         tag:'Superior · 13坪',  specs:['二中床','13 坪'], desc:'更寬敞的空間，一整窗山色美景，夜晚眺望星空，讓思維在論壇後繼續沉澱。', images:['https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/superior/1.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/superior/2.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/superior/3.jpg'], detail:{size:'13坪（約 43 m²）',bed:'中型床×2／二中床',occupancy:'2人，含大人及兒童',intro:['更寬敞的舒適空間','一整窗山色美景盡收眼底','夜晚眺望星空，讓思維在論壇後繼續沉澱'],amenities:['ADSL / WiFi 寬頻網路','免費無線上網服務','嚴選沐浴組高磅數浴巾組','乾濕分離淋浴浴缸設備','靜音冰箱','智慧型保險箱','43吋壁掛電視','電源控制系統恆溫空調','餐點供應']}},
-      {name:'河景客房',    price:6930, original:'NT$ 12,800 +10%', quota:3, image:'https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/river/1.jpg', focus:'50% 48%', mobileFocus:'52% 44%', en:'River View Room',       tag:'River View · 13坪', specs:['二中床','13 坪'], desc:'無垠淡水河景正面迎向房間，藍天白雲、山河盡收眼底，最受喜愛的河岸首選。', images:['https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/river/1.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/river/2.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/river/3.jpg'], detail:{size:'13坪（約 43 m²）',bed:'中型床×2／二中床',occupancy:'2人，含大人及兒童',intro:['無垠淡水河景正面迎向房間','藍天白雲、山河盡收眼底','最受喜愛的河岸首選，極致景觀體驗'],amenities:['ADSL / WiFi 寬頻網路','免費無線上網服務','嚴選沐浴組高磅數浴巾組','乾濕分離淋浴浴缸設備','靜音冰箱','智慧型保險箱','43吋壁掛電視','電源控制系統恆溫空調','餐點供應']}},
-      {name:'豪華客房',    price:8580,  original:'NT$ 15,800 +10%', quota:2, image:'https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/deluxe/1.jpg',  focus:'56% 50%', mobileFocus:'60% 46%', en:'Deluxe Room',     tag:'Deluxe · 16坪',          specs:['二大床','16 坪'], desc:'最大坪數，依山傍水遠離塵囂，面海美景一覽無遺，陪襯您旅行的每段記憶。', images:['https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/deluxe/1.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/deluxe/2.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/deluxe/3.jpg'], detail:{size:'16坪（約 53 m²）',bed:'大型床×2／二大床',occupancy:'2人，含大人及兒童',intro:['最大坪數房型，依山傍水','山海美景一覽無遺','陪襯每段旅途中最珍貴的記憶'],amenities:['ADSL / WiFi 寬頻網路','免費無線上網服務','嚴選沐浴組高磅數浴巾組','乾濕分離淋浴浴缸設備','靜音冰箱','智慧型保險箱','43吋壁掛電視','電源控制系統恆溫空調','餐點供應']}},
-      {name:'家庭套房',    price:11286, original:'NT$ 20,800 +10%', quota:3, image:'https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/family/1.jpg', focus:'50% 50%', mobileFocus:'50% 50%', en:'Executive Suite', tag:'Executive Suite · 23坪',  specs:['二大床','23 坪','最多 4 人'], desc:'23坪典雅溫馨空間，乾濕分離浴缸，43吋壁掛電視，適合全家出遊共享天倫之樂。', images:['https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/family/1.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/family/2.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/family/3.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/family/4.jpg'], detail:{size:'23坪（約 76 m²）',bed:'大型床×2／二大床',occupancy:'最多 4 人',intro:['23坪典雅溫馨空間','寬敞客廳與獨立臥室','乾濕分離設計，浴缸配備','適合全家出遊，共享天倫之樂'],amenities:['ADSL / WiFi 寬頻網路','免費無線上網服務','嚴選沐浴組高磅數浴巾組','乾濕分離淋浴浴缸設備','靜音冰箱','智慧型保險箱','43吋壁掛電視','電源控制系統恆溫空調','餐點供應']}},
-      {name:'日式套房',    price:13899, original:'NT$ 25,800 +10%', quota:3, image:'https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/japanese/1.jpg', focus:'50% 50%', mobileFocus:'50% 50%', en:'Japanese Suite',  tag:'Japanese Suite · 23坪',  specs:['四小床','23 坪','最多 4 人'], desc:'和式裝潢充滿禪風意境，面海寬敞明亮，四床設計適合家人或好友共同入住體驗自然氛圍。', images:['https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/japanese/1.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/japanese/2.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/japanese/3.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/japanese/4.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/japanese/5.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/japanese/6.jpg'], detail:{size:'23坪（約 76 m²）',bed:'和式小床×4／四小床',occupancy:'最多 4 人',intro:['和式裝潢充滿禪風意境','面海寬敞明亮，自然光充足','四床設計適合家人或好友共同入住'],amenities:['ADSL / WiFi 寬頻網路','免費無線上網服務','嚴選沐浴組高磅數浴巾組','乾濕分離淋浴浴缸設備','靜音冰箱','智慧型保險箱','43吋壁掛電視','電源控制系統恆溫空調','餐點供應']}}
+      {name:'標準客房',    price:4950, original:'NT$ 9,600 +10%',  quota:5, image:'https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard/1.jpg', focus:'50% 50%', mobileFocus:'50% 50%', en:'Standard Double Room', tag:'Standard · 11坪',  specs:['一大床','11 坪'], desc:'色調柔和舒適的簡約風格，大片落地窗美景一覽無遺，讓您遠離塵世的喧囂。', images:['https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard/1.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard/2.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard/3.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard/4.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard/5.jpg'], detail:{size:'11.2坪（約 37 m²）',bed:'180×200 cm／一大床',occupancy:'2 人',childPolicy:'每房至多招待兩位未滿6歲兒童免費入住（標準客房招待乙位）',intro:['色調柔和舒適的簡約風','大片落地窗美景一覽無遺','小黃星弄蝶翻翔，讓您遠離塵世的喧囂。'],amenities:['ADSL / WiFi 寬頻網路','免費無線上網服務','嚴選沐浴組高磅數浴巾組','乾濕分離淋浴浴缸設備','靜音冰箱','智慧型保險箱','43吋壁掛電視','電源控制系統恆溫空調','餐點供應']}},
+      {name:'標準雙床客房', price:4950, original:'NT$ 9,600 +10%',  quota:5, image:'https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard%20twin/1.jpg', focus:'50% 48%', mobileFocus:'52% 46%', en:'Standard Twin Room',   tag:'Twin Standard · 11坪', specs:['二小床','11 坪'], desc:'雙床設計靈活彈性，適合商務夥伴同行，柔和簡約空間讓交流延伸至住宿。', images:['https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard%20twin/1.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard%20twin/2.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard%20twin/3.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard%20twin/4.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/standard%20twin/5.jpg'], detail:{size:'11.2坪（約 37 m²）',bed:'標準床×2／二小床',occupancy:'2 人',childPolicy:'兒童同房恕不適用免費方案',intro:['雙床設計靈活彈性','適合商務夥伴或友伴同行','柔和簡約空間，讓交流延伸至住宿'],amenities:['ADSL / WiFi 寬頻網路','免費無線上網服務','嚴選沐浴組高磅數浴巾組','乾濕分離淋浴浴缸設備','靜音冰箱','智慧型保險箱','43吋壁掛電視','電源控制系統恆溫空調','餐點供應']}},
+      {name:'高級客房',    price:5830, original:'NT$ 10,800 +10%', quota:4, image:'https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/superior/1.jpg', focus:'50% 52%', mobileFocus:'54% 48%', en:'Superior Room',         tag:'Superior · 13坪',  specs:['二中床','13 坪'], desc:'更寬敞的空間，一整窗山色美景，夜晚眺望星空，讓思維在論壇後繼續沉澱。', images:['https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/superior/1.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/superior/2.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/superior/3.jpg'], detail:{size:'13坪（約 43 m²）',bed:'中型床×2／二中床',occupancy:'2 人',intro:['更寬敞的舒適空間','一整窗山色美景盡收眼底','夜晚眺望星空，讓思維在論壇後繼續沉澱'],amenities:['ADSL / WiFi 寬頻網路','免費無線上網服務','嚴選沐浴組高磅數浴巾組','乾濕分離淋浴浴缸設備','靜音冰箱','智慧型保險箱','43吋壁掛電視','電源控制系統恆溫空調','餐點供應']}},
+      {name:'河景客房',    price:6930, original:'NT$ 12,800 +10%', quota:3, image:'https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/river/1.jpg', focus:'50% 48%', mobileFocus:'52% 44%', en:'River View Room',       tag:'River View · 13坪', specs:['二中床','13 坪'], desc:'無垠淡水河景正面迎向房間，藍天白雲、山河盡收眼底，最受喜愛的河岸首選。', images:['https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/river/1.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/river/2.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/river/3.jpg'], detail:{size:'13坪（約 43 m²）',bed:'中型床×2／二中床',occupancy:'2 人',intro:['無垠淡水河景正面迎向房間','藍天白雲、山河盡收眼底','最受喜愛的河岸首選，極致景觀體驗'],amenities:['ADSL / WiFi 寬頻網路','免費無線上網服務','嚴選沐浴組高磅數浴巾組','乾濕分離淋浴浴缸設備','靜音冰箱','智慧型保險箱','43吋壁掛電視','電源控制系統恆溫空調','餐點供應']}},
+      {name:'豪華客房',    price:8580,  original:'NT$ 15,800 +10%', quota:2, image:'https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/deluxe/1.jpg',  focus:'56% 50%', mobileFocus:'60% 46%', en:'Deluxe Room',     tag:'Deluxe · 16坪',          specs:['二大床','16 坪'], desc:'最大坪數，依山傍水遠離塵囂，面海美景一覽無遺，陪襯您旅行的每段記憶。', images:['https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/deluxe/1.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/deluxe/2.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/deluxe/3.jpg'], detail:{size:'16坪（約 53 m²）',bed:'大型床×2／二大床',occupancy:'2 人',intro:['最大坪數房型，依山傍水','山海美景一覽無遺','陪襯每段旅途中最珍貴的記憶'],amenities:['ADSL / WiFi 寬頻網路','免費無線上網服務','嚴選沐浴組高磅數浴巾組','乾濕分離淋浴浴缸設備','靜音冰箱','智慧型保險箱','43吋壁掛電視','電源控制系統恆溫空調','餐點供應']}},
+      {name:'家庭套房',    price:11286, original:'NT$ 20,800 +10%', quota:3, image:'https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/family/1.jpg', focus:'50% 50%', mobileFocus:'50% 50%', en:'Executive Suite', tag:'Executive Suite · 23坪',  specs:['二大床','23 坪'], desc:'23坪典雅溫馨空間，乾濕分離浴缸，43吋壁掛電視，適合全家出遊共享天倫之樂。', images:['https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/family/1.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/family/2.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/family/3.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/family/4.jpg'], detail:{size:'23坪（約 76 m²）',bed:'大型床×2／二大床',occupancy:'2 人',intro:['23坪典雅溫馨空間','寬敞客廳與獨立臥室','乾濕分離設計，浴缸配備','適合全家出遊，共享天倫之樂'],amenities:['ADSL / WiFi 寬頻網路','免費無線上網服務','嚴選沐浴組高磅數浴巾組','乾濕分離淋浴浴缸設備','靜音冰箱','智慧型保險箱','43吋壁掛電視','電源控制系統恆溫空調','餐點供應']}},
+      {name:'日式套房',    price:13899, original:'NT$ 25,800 +10%', quota:3, image:'https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/japanese/1.jpg', focus:'50% 50%', mobileFocus:'50% 50%', en:'Japanese Suite',  tag:'Japanese Suite · 23坪',  specs:['四小床','23 坪'], desc:'和式裝潢充滿禪風意境，面海寬敞明亮，四床設計適合家人或好友共同入住體驗自然氛圍。', images:['https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/japanese/1.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/japanese/2.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/japanese/3.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/japanese/4.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/japanese/5.jpg','https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/room/japanese/6.jpg'], detail:{size:'23坪（約 76 m²）',bed:'和式小床×4／四小床',occupancy:'4 人',intro:['和式裝潢充滿禪風意境','面海寬敞明亮，自然光充足','四床設計適合家人或好友共同入住'],amenities:['ADSL / WiFi 寬頻網路','免費無線上網服務','嚴選沐浴組高磅數浴巾組','乾濕分離淋浴浴缸設備','靜音冰箱','智慧型保險箱','43吋壁掛電視','電源控制系統恆溫空調','餐點供應']}}
     ];
 
     // ── 後台訂單暫存（前台用於計算房型剩餘名額） ──
@@ -1224,6 +1264,20 @@
     function formatRoomValue(room) {
       return room.name + '｜NT$ ' + room.price.toLocaleString() + ' / 晚';
     }
+
+    var BREAKFAST_ICON = 'data:image/svg+xml;utf8,' + encodeURIComponent(
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#11100D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+      '<path d="M4 3v7"/><path d="M7 3v7"/><path d="M4 7h3"/><path d="M5.5 10v11"/>' +
+      '<path d="M15 3v8"/><path d="M19 3v8"/><path d="M15 11c2.2 0 4-1.8 4-4"/><path d="M17 11v10"/>' +
+      '</svg>'
+    );
+    var PARKING_ICON = 'data:image/svg+xml;utf8,' + encodeURIComponent(
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#11100D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+      '<path d="M5 15l1.6-4.4A2 2 0 0 1 8.5 9h7a2 2 0 0 1 1.9 1.4L19 15"/>' +
+      '<path d="M4 15h16v4H4z"/><path d="M7 19v2"/><path d="M17 19v2"/>' +
+      '<circle cx="7.5" cy="15.5" r="1"/><circle cx="16.5" cy="15.5" r="1"/>' +
+      '</svg>'
+    );
 
     // ── 動態渲染房型卡片列表 ──
     function renderRoomGrid() {
@@ -1257,15 +1311,18 @@
             '<button class="detail-btn" type="button" data-name="' + room.name + '">詳細說明</button>' +
             '</div>';
         }
+        var occupancySpec = room.detail && room.detail.occupancy
+          ? '<span class="rsp">入住 ' + room.detail.occupancy + '</span>'
+          : '';
         return '<article class="room-card" data-name="' + room.name + '" data-price="' + room.price.toLocaleString() + '">' +
           riHtml +
-          '<div class="rb"><p class="r-en">' + room.en + '</p><h3 class="rn">' + room.name + '</h3><div class="rspecs">' + room.specs.map(function(s){ return '<span class="rsp">' + s + '</span>'; }).join('') + '</div><p class="rdesc">' + room.desc + '</p></div>' +
-          '<div class="rftr"><div><p class="price-lbl">Special Rate / Night</p><p class="price-v">NT$ ' + room.price.toLocaleString() + '<span class="price-u">起</span></p></div><div><p class="orig-price">官網原價<br><strong>' + room.original + '</strong></p><div class="availability" id="av-' + room.name + '">剩餘名額 —</div></div></div>' +
+          '<div class="rb"><p class="r-en">' + room.en + '</p><h3 class="rn">' + room.name + '</h3><div class="rspecs">' + room.specs.map(function(s){ return '<span class="rsp">' + s + '</span>'; }).join('') + occupancySpec + '</div><p class="rdesc">' + room.desc + '</p></div>' +
+          '<div class="rftr"><div><p class="price-lbl">Special Rate / Night</p><p class="price-v">NT$ ' + room.price.toLocaleString() + '<span class="price-u">起</span></p><p class="price-perks"><span class="price-perks-item"><img class="price-perks-icon" src="' + BREAKFAST_ICON + '" alt="">含早餐</span><span class="price-perks-item"><img class="price-perks-icon" src="' + PARKING_ICON + '" alt="">免費停車</span></p></div><div><p class="orig-price">官網原價<br><strong>' + room.original + '</strong></p><div class="availability" id="av-' + room.name + '">剩餘名額 —</div></div></div>' +
           '<button class="sel-btn" type="button"><span class="sel-label">加入此房型</span><span class="sel-arrow">＋</span></button>' +
           '<div class="room-counter">' +
-            '<button class="counter-btn c-minus" type="button">－</button>' +
+            '<button class="counter-btn c-minus" type="button">&#8722;</button>' +
             '<span class="counter-num">0</span>' +
-            '<button class="counter-btn c-plus" type="button">＋</button>' +
+            '<button class="counter-btn c-plus" type="button">+</button>' +
             '<button class="goto-form-btn" type="button">填寫訂房資料 →</button>' +
           '</div>' +
         '</article>';
@@ -1461,13 +1518,18 @@
       const img     = document.getElementById('roomPreviewImg');
       const badge   = document.getElementById('roomPreviewBadge');
       const roomObj = ROOM_DATA.find(function(r) { return r.name === roomName; });
-      if (roomObj) {
-        img.src = roomObj.image;
-        img.style.objectPosition = roomObj.focus || '50% 50%';
+      const fallbackRoom = ROOM_DATA.find(function(r) { return r.en === 'River View Room'; }) || ROOM_DATA[0];
+      const previewRoom = roomObj || fallbackRoom;
+      const isFallbackPreview = !roomObj && !!previewRoom;
+      if (previewRoom) {
+        img.src = previewRoom.image;
+        img.style.objectPosition = previewRoom.focus || '50% 50%';
         const total = getSelectedRooms().length;
-        badge.textContent = total > 1
-          ? '▸ ' + (roomObj.tag || roomObj.name) + '（切換下拉可預覽其他房型）'
-          : roomObj.tag || roomObj.name;
+        badge.textContent = isFallbackPreview
+          ? '房型預覽 · ' + (previewRoom.tag || previewRoom.name)
+          : (total > 1
+            ? '▸ ' + (previewRoom.tag || previewRoom.name) + '（切換下拉可預覽其他房型）'
+            : previewRoom.tag || previewRoom.name);
         layout.classList.add('has-preview');
       } else {
         layout.classList.remove('has-preview');
@@ -1736,6 +1798,16 @@
     var _hdrEl = document.getElementById('hdr');
     function _onScroll() {
       var sy = window.scrollY || document.documentElement.scrollTop || 0;
+      var transportEl = document.getElementById('transport');
+      var transportInView = false;
+      if (transportEl) {
+        var rect = transportEl.getBoundingClientRect();
+        var triggerY = window.innerHeight * 0.83;
+        transportInView = rect.top <= triggerY && rect.bottom >= triggerY;
+      }
+      _hdrEl.classList.toggle('solid', sy > window.innerHeight * 0.5);
+      els.backTopBtn.classList.toggle('show', sy > 680);
+      els.backTopBtn.classList.toggle('invert', transportInView);
       _hdrEl.classList.toggle('solid', sy > window.innerHeight * 0.5);
       els.backTopBtn.classList.toggle('show', sy > 680);
     }
@@ -1813,6 +1885,7 @@
     // ── 頁面初始化 ──
     renderRoomGrid();
     addRoomToList('');  // 預設顯示一列空白下拉
+    updateRoomPreview('');
     syncRoomAvailability();
 
     // ── 背景音樂播放器控制 ──
@@ -1965,16 +2038,29 @@
       var qty    = document.getElementById('rmoQty');
       var qtyNum = document.getElementById('rmoQtyNum');
       var plus   = document.getElementById('rmoQtyPlus');
+      var gotoForm = document.getElementById('rmoGotoForm');
       if (count > 0) {
         addBtn.style.display = 'none';
         qty.style.display = 'flex';
+        qty.style.flex = '1 1 0%';
         qtyNum.textContent = count;
+        if (gotoForm) gotoForm.classList.add('visible');
         plus.disabled = count >= remain;
       } else {
         addBtn.style.display = '';
         qty.style.display = 'none';
+        qty.style.flex = '';
+        if (gotoForm) gotoForm.classList.remove('visible');
       }
     }
+
+    document.getElementById('rmoGotoForm').addEventListener('click', function() {
+      closeRoomModal();
+      setTimeout(function() {
+        var target = document.getElementById('booking-form');
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 180);
+    });
 
     document.getElementById('rmoAddBtn').addEventListener('click', function() {
       if (!rmoCurrentRoom) return;
