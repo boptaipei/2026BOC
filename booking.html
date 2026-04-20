@@ -192,19 +192,6 @@
     .feature-k { font-family:'Geist',sans-serif; font-size:12px; font-weight:500; letter-spacing:.06em; color:var(--text-4); }
     .feature-v { flex:1; font-size:14px; font-weight:500; color:var(--text-2); text-align:right; }
 
-    /* ── 跑馬燈 ── */
-    .marquee-sec { overflow:hidden; background:var(--bg); padding:0; line-height:1; position:relative; z-index:0; }
-    .marquee-track { display:flex; align-items:flex-end; white-space:nowrap; animation:marqueeScroll 40s linear infinite; will-change:transform; transform:translateY(12px); }
-    .marquee-item    @keyframes marqueeScroll { from { transform:translateX(0); } to { transform:translateX(-50%); } }
-
-    /* ── 跑馬燈 ── */
-    .marquee-wrap { overflow:hidden; background:var(--yellow); padding:15px 0; user-select:none; }
-    .marquee-track { display:flex; white-space:nowrap; width:max-content; animation:marqueeScroll 28s linear infinite; }
-    .marquee-track:hover { animation-play-state:paused; }
-    .marquee-item { font-family:'Geist',sans-serif; font-size:11px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:var(--text); padding:0 40px; display:inline-flex; align-items:center; }
-    .marquee-sep { font-size:16px; color:var(--text); opacity:.28; padding:0 4px; }
-    @keyframes marqueeScroll { from { transform:translateX(0); } to { transform:translateX(-50%); } }
-
     /* ── 住宿方案（房型選擇）卡片區 ── */
     .rooms-sec { background:var(--white); padding:74px 24px 90px; }
     .rooms-inner { max-width:1280px; margin:0 auto; }
@@ -302,6 +289,11 @@
     .rmo-orig { font-family:'Geist',sans-serif; font-size:10px; color:var(--text-4); text-decoration:line-through; margin-top:1px; }
     .rmo-add-btn { background:var(--text); color:var(--white); border:none; font-family:'Geist',sans-serif; font-size:11px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; padding:13px 22px; cursor:pointer; transition:.2s; white-space:nowrap; }
     .rmo-add-btn:hover { background:var(--yellow); color:var(--text); }
+    .rmo-qty { display:none; align-items:stretch; border:2px solid var(--yellow); }
+    .rmo-qty-btn { padding:12px 18px; background:transparent; border:none; cursor:pointer; font-size:17px; font-weight:700; color:var(--text); font-family:'Geist',sans-serif; transition:.15s; line-height:1; }
+    .rmo-qty-btn:hover { background:rgba(17,16,13,.07); }
+    .rmo-qty-btn:disabled { opacity:.3; cursor:default; }
+    .rmo-qty-num { display:flex; align-items:center; justify-content:center; font-family:'Geist',sans-serif; font-weight:700; font-size:15px; color:var(--text); min-width:44px; border-left:1px solid var(--line-2); border-right:1px solid var(--line-2); }
     @media (max-width:600px) {
       .room-modal-overlay { padding:0; align-items:flex-end; }
       .room-modal { max-width:100%; max-height:93vh; }
@@ -597,8 +589,6 @@
       .feature-block:nth-of-type(2) .feature-img img { --obj-pos-mobile:50% 34%; }
       .feature-block:nth-of-type(3) .feature-img img { --obj-pos-mobile:52% 44%; }
       .feature-block:nth-of-type(4) .feature-img img { --obj-pos-mobile:50% 52%; }
-      .marquee-track { animation-duration:42s; transform:translateY(6px); }
-      .marquee-item { padding:0 32px; font-size: clamp(220px, 30vw, 460px); letter-spacing:.015em; color:rgba(255,255,255,.035); }
       .rooms-sec { padding-top:46px; }
       .sec-header { margin-bottom:32px; }
       .rooms-note { margin:-18px 0 20px; }
@@ -712,7 +702,7 @@
     </nav>
     <div class="hdr-actions">
      <button class="music-player-btn" id="musicPlayerBtn" aria-label="播放背景音樂">♫</button>
-     <a href="#" class="hdr-back">返回報名頁</a>
+     <a href="#" class="hdr-back">商明領袖論壇報名頁</a>
      <a href="#booking-form" class="hdr-reserve">提交住宿需求</a>
      <button class="hdr-burger" id="hdrBurger" aria-label="開啟選單" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -867,28 +857,6 @@
     </article>
 
    </section>
-
-   <!-- ── 跑馬燈 ── -->
-   <div class="marquee-wrap" aria-hidden="true">
-    <div class="marquee-track">
-     <span class="marquee-item">Leadership Forum 2026<span class="marquee-sep"> · </span>Exclusive Accommodation</span>
-     <span class="marquee-item">Leadership Forum 2026<span class="marquee-sep"> · </span>Exclusive Accommodation</span>
-     <span class="marquee-item">Leadership Forum 2026<span class="marquee-sep"> · </span>Exclusive Accommodation</span>
-     <span class="marquee-item">Leadership Forum 2026<span class="marquee-sep"> · </span>Exclusive Accommodation</span>
-     <span class="marquee-item">Leadership Forum 2026<span class="marquee-sep"> · </span>Exclusive Accommodation</span>
-     <span class="marquee-item">Leadership Forum 2026<span class="marquee-sep"> · </span>Exclusive Accommodation</span>
-     <span class="marquee-item">Leadership Forum 2026<span class="marquee-sep"> · </span>Exclusive Accommodation</span>
-     <span class="marquee-item">Leadership Forum 2026<span class="marquee-sep"> · </span>Exclusive Accommodation</span>
-     <span class="marquee-item">Leadership Forum 2026<span class="marquee-sep"> · </span>Exclusive Accommodation</span>
-     <span class="marquee-item">Leadership Forum 2026<span class="marquee-sep"> · </span>Exclusive Accommodation</span>
-     <span class="marquee-item">Leadership Forum 2026<span class="marquee-sep"> · </span>Exclusive Accommodation</span>
-     <span class="marquee-item">Leadership Forum 2026<span class="marquee-sep"> · </span>Exclusive Accommodation</span>
-     <span class="marquee-item">Leadership Forum 2026<span class="marquee-sep"> · </span>Exclusive Accommodation</span>
-     <span class="marquee-item">Leadership Forum 2026<span class="marquee-sep"> · </span>Exclusive Accommodation</span>
-     <span class="marquee-item">Leadership Forum 2026<span class="marquee-sep"> · </span>Exclusive Accommodation</span>
-     <span class="marquee-item">Leadership Forum 2026<span class="marquee-sep"> · </span>Exclusive Accommodation</span>
-    </div>
-   </div>
 
    <!-- ── 住宿方案選擇（房型卡片列表，由 JS 動態渲染） ── -->
    <section class="rooms-sec" id="rooms">
@@ -1081,7 +1049,7 @@
       <div class="status-box" id="submitStatus"></div>
       <button type="submit" class="sub-btn" id="submitBtn"><span>Submit Booking Request</span><span>→</span></button>
       <p class="sub-note">送出後將寄送確認通知至您的信箱，請確認電子信箱填寫正確。此表單為需求提交，實際訂房仍以商明回覆為準。</p>
-      <a href="#" class="back-register-btn">← 返回報名頁</a>
+      <a href="#" class="back-register-btn">前往商明領袖論壇報名頁</a>
      </form>
     </div>
    </section>
@@ -1194,6 +1162,11 @@
           <p class="rmo-orig" id="rmoOrig"></p>
         </div>
         <button class="rmo-add-btn" id="rmoAddBtn" type="button">加入此房型</button>
+        <div class="rmo-qty" id="rmoQty">
+          <button class="rmo-qty-btn rmo-qty-minus" id="rmoQtyMinus" type="button">－</button>
+          <span class="rmo-qty-num" id="rmoQtyNum">0</span>
+          <button class="rmo-qty-btn rmo-qty-plus" id="rmoQtyPlus" type="button">＋</button>
+        </div>
       </div>
     </div>
   </div>
@@ -1961,11 +1934,7 @@
       document.getElementById('rmoNotices').innerHTML = HOTEL_NOTICES.map(function(n) { return '<li>' + n + '</li>'; }).join('');
       document.getElementById('rmoPrice').textContent = 'NT$ ' + room.price.toLocaleString();
       document.getElementById('rmoOrig').textContent = '官網原價 ' + room.original;
-      document.getElementById('rmoAddBtn').onclick = function() {
-        addRoomToList(room.name);
-        closeRoomModal();
-        scrollToForm();
-      };
+      updateRmoFooter();
 
       document.getElementById('roomModalOverlay').classList.add('open');
       document.body.style.overflow = 'hidden';
@@ -1986,6 +1955,41 @@
       document.getElementById('roomModalOverlay').classList.remove('open');
       document.body.style.overflow = '';
     }
+
+    function updateRmoFooter() {
+      if (!rmoCurrentRoom) return;
+      var count = getSelectedRooms().filter(function(r) { return r.split('｜')[0] === rmoCurrentRoom.name; }).length;
+      var remain = getRemainingQuota(rmoCurrentRoom.name);
+      var addBtn = document.getElementById('rmoAddBtn');
+      var qty    = document.getElementById('rmoQty');
+      var qtyNum = document.getElementById('rmoQtyNum');
+      var plus   = document.getElementById('rmoQtyPlus');
+      if (count > 0) {
+        addBtn.style.display = 'none';
+        qty.style.display = 'flex';
+        qtyNum.textContent = count;
+        plus.disabled = count >= remain;
+      } else {
+        addBtn.style.display = '';
+        qty.style.display = 'none';
+      }
+    }
+
+    document.getElementById('rmoAddBtn').addEventListener('click', function() {
+      if (!rmoCurrentRoom) return;
+      addRoomToList(rmoCurrentRoom.name);
+      updateRmoFooter();
+    });
+    document.getElementById('rmoQtyPlus').addEventListener('click', function() {
+      if (!rmoCurrentRoom) return;
+      addRoomToList(rmoCurrentRoom.name);
+      updateRmoFooter();
+    });
+    document.getElementById('rmoQtyMinus').addEventListener('click', function() {
+      if (!rmoCurrentRoom) return;
+      removeLastRoom(rmoCurrentRoom.name);
+      updateRmoFooter();
+    });
 
     document.getElementById('rmoClose').addEventListener('click', closeRoomModal);
     document.getElementById('roomModalOverlay').addEventListener('click', function(e) {

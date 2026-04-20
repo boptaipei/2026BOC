@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>2026 商明領袖論壇｜企業躍升的關鍵分水嶺</title>
+<link rel="icon" type="image/png" href="https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/logo.png">
+<link rel="apple-touch-icon" href="https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;700;900&family=Noto+Sans+TC:wght@200;300;400;500;700;900&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
@@ -87,14 +89,14 @@ body *{cursor:none!important}
   position:absolute;inset:0;
   background-image:url('https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/BOC%20LP%20Photo/Photo10.jpg');
   background-size:cover;background-position:center 30%;
-  opacity:.80;filter:grayscale(10%);
+  opacity:.75;filter:grayscale(10%);
   z-index:0;transform:scale(1.05);transition:transform 14s ease-out
 }
 .hero-bg-img.loaded{transform:scale(1)}
 /* 背景整體約75%可見 */
 .hero-overlay{
   position:absolute;inset:0;
-  background:rgba(0,0,0,.77);
+  background:rgba(0,0,0,.65);
   z-index:1
 }
 .hero-blob{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:2}
@@ -109,7 +111,7 @@ body *{cursor:none!important}
   max-width:1100px;
   margin:0 auto;                      /* 水平居中 */
   padding:0 2.5rem;
-  padding-top:calc(var(--nav-h) + .6rem);
+  padding-top:calc(var(--nav-h) + .1rem);
   padding-bottom:1.2rem;
   height:100%;
   display:flex;flex-direction:column;
@@ -119,7 +121,7 @@ body *{cursor:none!important}
   text-align:left;
 }
 /* top group */
-.hero-top{display:flex;flex-direction:column;gap:.3rem;padding-top:0;align-items:flex-start;width:100%}
+.hero-top{display:flex;flex-direction:column;gap:.15rem;padding-top:0;align-items:flex-start;width:100%}
 /* bottom group */
 .hero-bottom{width:100%;padding-bottom:.3rem}
 .hero-tag{font-size:.6rem;letter-spacing:.3rem;color:var(--yellow);font-weight:700;text-transform:uppercase;animation:fadeUp .9s var(--ease) .2s both}
@@ -143,7 +145,7 @@ body *{cursor:none!important}
   animation:fadeUp 1s var(--ease) .62s both;
   border-left:3px solid var(--yellow);
   padding:1.1rem 1.3rem;        /* 2: 上下 padding 加大 */
-  background:rgba(0,0,0,.55);
+  background:rgba(0,0,0,.50);
   backdrop-filter:blur(10px);
   -webkit-backdrop-filter:blur(10px);
   border-radius:0 4px 4px 0;
@@ -381,14 +383,15 @@ h2.section-title{font-family:"Noto Serif TC",serif;font-size:clamp(1.8rem,3.5vw,
   width:100%;height:100%;
   object-fit:cover;object-position:center 20%;
   display:block;
-  filter:grayscale(8%);
+  filter:grayscale(100%) contrast(1.45) brightness(.92);
   transition:filter .7s;
 }
-.evan-photo:hover img{filter:grayscale(0%)}
+.evan-photo:hover img{filter:grayscale(100%) contrast(1.45) brightness(.92)}
 .evan-photo::after{
   content:"";
   position:absolute;inset:0;
-  background:linear-gradient(to right,transparent 68%,#222 100%);
+  background:linear-gradient(to right,rgba(0,0,0,.18) 40%,#222 100%),
+             linear-gradient(to bottom,transparent 72%,rgba(34,34,34,.55) 100%);
 }
 
 /* 右側文字區 */
@@ -410,7 +413,7 @@ h2.section-title{font-family:"Noto Serif TC",serif;font-size:clamp(1.8rem,3.5vw,
   margin-bottom:1rem;
 }
 .evan-sub{
-  font-size:.85rem;color:rgba(255,255,255,.5);
+  font-size:.98rem;color:rgba(255,255,255,1);
   line-height:2.1;font-weight:300;
   margin-bottom:2.5rem;
   border-left:2px solid rgba(255,255,255,.12);
@@ -438,17 +441,30 @@ h2.section-title{font-family:"Noto Serif TC",serif;font-size:clamp(1.8rem,3.5vw,
   object-fit:cover;object-position:top center;
   display:block;
 }
-.evan-sig{
-  font-family:"DM Serif Display",serif;
-  font-style:italic;
-  font-size:clamp(2.8rem,4.8vw,4.4rem);
-  color:#fff;line-height:.92;
-  letter-spacing:.01rem;
-  margin-bottom:.55rem;
+/* 名字區塊 */
+.evan-name-line{
+  display:flex;align-items:flex-start;gap:.8rem;flex-wrap:wrap;margin-bottom:.8rem;
 }
-.evan-role{
-  font-size:.65rem;color:rgba(255,255,255,.4);
-  letter-spacing:.25rem;font-weight:400;line-height:1.9;
+.evan-name-zh{
+  font-family:"Noto Serif TC",serif;
+  font-size:clamp(1.6rem,2.8vw,2.4rem);
+  font-weight:300;color:#fff;
+  letter-spacing:.06rem;line-height:1;
+}
+.evan-sig-img{
+  height:clamp(2.117rem,3.704vw,3.175rem);
+  width:auto;display:block;
+  object-fit:contain;filter:invert(1);
+  margin-top:.28em;
+}
+.evan-role-title{
+  font-size:.85rem;
+  font-weight:700;color:#fff;
+  letter-spacing:.12rem;margin-bottom:.05rem;
+}
+.evan-role-company{
+  font-size:.72rem;color:rgba(255,255,255,.55);
+  letter-spacing:.2rem;font-weight:400;line-height:1.9;
 }
 
 /* ================================================
@@ -525,7 +541,7 @@ h2.section-title{font-family:"Noto Serif TC",serif;font-size:clamp(1.8rem,3.5vw,
 .event-section{position:relative;overflow:hidden;color:#fff;padding:0!important;margin:0;scroll-snap-align:start;scroll-snap-stop:always}
 .event-section-inner{position:relative;width:100%;aspect-ratio:16/9;min-height:480px;display:flex;flex-direction:column;justify-content:center}
 .event-bg{position:absolute;inset:0;background-image:url('https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/BOC%20LP%20Photo/Photo9.jpg');background-size:cover;background-position:center;z-index:0}
-.event-bg::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.72)}
+.event-bg::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.67)}
 .event-section .container{position:relative;z-index:1;padding-top:3rem;padding-bottom:3rem}
 .event-head{margin-bottom:2rem;text-align:center}
 .event-main-title{font-family:"Noto Serif TC",serif;font-size:clamp(2rem,5vw,4.2rem);font-weight:900;color:#fff;letter-spacing:.1rem;line-height:1;text-align:center}
@@ -588,7 +604,7 @@ h2.section-title{font-family:"Noto Serif TC",serif;font-size:clamp(1.8rem,3.5vw,
 
   /* 五② Hero */
   .hero{height:100dvh;padding:0}
-  .hero-inner{width:95%;padding:0 1.2rem;padding-top:calc(var(--nav-h) + .4rem);padding-bottom:1rem;gap:0;text-align:left;align-items:flex-start;justify-content:space-between}
+  .hero-inner{width:95%;padding:0 1.2rem;padding-top:calc(var(--nav-h) + .1rem);padding-bottom:1rem;gap:0;text-align:left;align-items:flex-start;justify-content:space-between}
   .hero-top{gap:.25rem;padding-top:0;align-items:flex-start}
   .h1-line2{font-size:clamp(1.1rem,6vw,1.8rem);white-space:normal}
   .hero-sub{white-space:normal;font-size:.78rem}
@@ -655,6 +671,159 @@ h2.section-title{font-family:"Noto Serif TC",serif;font-size:clamp(1.8rem,3.5vw,
 @media(max-width:480px){
   .h1-line2{font-size:clamp(1rem,6.5vw,1.5rem)}
   .hero-tag{font-size:.55rem}
+}
+
+/* ================================================
+   六、iPAD 響應式 (768px – 1100px)
+   ================================================ */
+@media(min-width:769px) and (max-width:1100px){
+
+  /* 六① Global */
+  .container{padding:0 2rem}
+  html{scroll-snap-type:none}   /* iPad 上關閉 snap，避免 iOS Safari 怪異行為 */
+
+  /* 六② Nav — iPad 顯示漢堡選單 */
+  .hamburger{display:flex}
+  .nav-links{display:none}
+  .nav-inner{height:64px}
+  .nav.scrolled .nav-inner{height:56px}
+
+  /* 六③ Hero */
+  .hero{height:100dvh;min-height:640px}
+  .hero-inner{
+    width:94%;
+    padding:0 1.8rem;
+    padding-top:calc(var(--nav-h) + .5rem);
+    padding-bottom:1.5rem;
+    justify-content:space-between;
+  }
+  .hero-top{gap:.3rem}
+  .h1-line2{font-size:clamp(1.3rem,4vw,2.4rem);white-space:normal}
+  .h1-line1{font-size:clamp(.85rem,1.6vw,1.2rem)}
+  .hero-sub{font-size:.85rem;white-space:normal}
+  .hero-highlight{max-width:100%;padding:.9rem 1.1rem}
+  .hero-hl-tag{font-size:clamp(.88rem,1.3vw,1.1rem)}
+  .hero-hl-body{font-size:.74rem;-webkit-line-clamp:3}
+  .hero-info{
+    grid-template-columns:repeat(4,1fr);
+    gap:0;
+    padding-top:.8rem;
+    padding-bottom:.4rem;
+  }
+  .info-k{font-size:.5rem;letter-spacing:.2rem}
+  .info-v{font-size:clamp(.72rem,.9vw,.9rem)}
+  .info-vs{font-size:.7rem}
+  .hero-ctas{margin-bottom:1.5rem;gap:.6rem}
+  .btn{padding:.6rem 1.4rem;font-size:.78rem}
+
+  /* 六④ Fit section */
+  .fit-section{min-height:100dvh}
+  .fit-section .container{padding-top:3rem;padding-bottom:3rem}
+  .fit-grid{grid-template-columns:repeat(2,1fr);gap:2px;margin-top:2rem}
+  .fit-card{padding:2rem 1.5rem}
+  .fit-card h4{white-space:normal;font-size:.9rem}
+
+  /* 六⑤ Speakers */
+  #speakers{padding:4rem 0 3rem}
+  .spk-grid{
+    grid-template-columns:repeat(4,1fr);
+    gap:1.2rem;
+    padding:0 2rem;
+  }
+  /* 上排兩張各佔2格，居中 */
+  .spk-card{grid-column:span 2}
+  .spk-card:nth-child(1){grid-column:1 / span 2}
+  .spk-card:nth-child(2){grid-column:3 / span 2}
+  /* 下排三張：用 auto-fill，每張 span 2，最後一張手動置中 */
+  .spk-card:nth-child(3){grid-column:1 / span 2}
+  .spk-card:nth-child(4){grid-column:2 / span 2}
+  .spk-card:nth-child(5){grid-column:3 / span 2}
+  .spk-name{font-size:clamp(1.4rem,3.5vw,2rem)}
+  .spk-hook{font-size:.9rem}
+  .spk-note{padding-left:2rem;padding-right:2rem}
+
+  /* 六⑥ Evan section */
+  #evan{height:auto;min-height:100dvh;display:block}
+  .evan-inner{grid-template-columns:1fr;height:auto}
+  .evan-photo{height:52vw;min-height:280px}
+  .evan-photo::after{background:linear-gradient(to bottom,transparent 60%,#222 100%)}
+  .evan-body{
+    padding:2.5rem 2.5rem 3rem;
+    justify-content:flex-start;
+    gap:1.5rem;
+  }
+  .evan-title{font-size:clamp(1.3rem,2.5vw,1.8rem);margin-bottom:.8rem}
+  .evan-sub{font-size:.9rem;line-height:2}
+  .evan-sig-block{gap:1.5rem}
+  .evan-avatar{width:110px;height:110px}
+  .evan-name-zh{font-size:clamp(1.4rem,3vw,1.9rem)}
+
+  /* 六⑦ Registration */
+  #register{padding:2.5rem 0;min-height:100dvh}
+  .register-card{
+    padding:2rem 2.2rem;
+    max-width:680px;
+    max-height:95dvh;
+  }
+  .benefits{grid-template-columns:repeat(2,1fr)}
+  .price-box{gap:1.5rem}
+  .price-main .amt{font-size:clamp(2.6rem,6vw,4rem)}
+
+  /* 六⑧ FAQ */
+  #faq{height:auto;min-height:100dvh;padding:4rem 0;align-items:flex-start}
+  #faq .container{padding-top:0;padding-bottom:0}
+  .faq-grid{
+    grid-template-columns:1fr 1.5fr;
+    gap:2.5rem;
+    align-items:flex-start;
+  }
+  .faq-list{max-height:55dvh}
+  .faq-section .section-title{font-size:clamp(1.5rem,3vw,2.2rem)}
+  .faq-q{font-size:.84rem}
+
+  /* 六⑨ Event section */
+  .event-section-inner{aspect-ratio:auto;min-height:500px}
+  .event-main-title{font-size:clamp(1.8rem,5vw,3.2rem)}
+  .event-grid{
+    grid-template-columns:repeat(3,1fr);
+    max-width:720px;
+  }
+  .event-item{padding:1.2rem 1.2rem}
+  .event-item p{font-size:.88rem}
+
+  /* 六⑩ Float bar */
+  .float-bar-inner{flex-wrap:nowrap;justify-content:space-between}
+  .float-bar-text{font-size:.75rem}
+  .float-bar-btn{padding:.5rem 1.2rem;font-size:.7rem}
+
+  /* 六⑪ Modal */
+  .modal{max-width:480px}
+  .modal-body{padding:2.2rem 1.8rem 1.8rem}
+}
+
+/* ================================================
+   六-A. iPad Pro 12.9" 橫向 (1024px)
+   ================================================ */
+@media(min-width:1024px) and (max-width:1100px){
+  .spk-grid{grid-template-columns:repeat(6,1fr);padding:0 2rem}
+  .spk-card{grid-column:span 2}
+  .spk-card:nth-child(1){grid-column:2 / span 2}
+  .spk-card:nth-child(2){grid-column:4 / span 2}
+  .spk-card:nth-child(3){grid-column:1 / span 2}
+  .spk-card:nth-child(4){grid-column:3 / span 2}
+  .spk-card:nth-child(5){grid-column:5 / span 2}
+  .fit-grid{grid-template-columns:repeat(3,1fr)}
+  .faq-grid{grid-template-columns:1fr 1.6fr;align-items:center}
+  .faq-list{max-height:60dvh}
+}
+
+/* ================================================
+   六-B. 觸控設備 — 隱藏自定游標 (iPad / 手機)
+   ================================================ */
+@media(hover:none) and (pointer:coarse){
+  .cursor-dot,.cursor-ring{display:none!important}
+  body *{cursor:auto!important}
+  html{cursor:auto!important}
 }
 </style>
 </head>
@@ -910,7 +1079,7 @@ h2.section-title{font-family:"Noto Serif TC",serif;font-size:clamp(1.8rem,3.5vw,
 <section id="evan">
   <div class="evan-inner">
     <div class="evan-photo">
-      <img src="https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/BOC%20LP%20Photo/Photo2.jpg" alt="活動現場" loading="lazy">
+      <img src="https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/BOC%20LP%20Photo/poolpool.jpg" alt="水景" loading="lazy">
     </div>
     <div class="evan-body">
       <div class="evan-top">
@@ -924,8 +1093,12 @@ h2.section-title{font-family:"Noto Serif TC",serif;font-size:clamp(1.8rem,3.5vw,
           <img src="https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/BOC%20LP%20Photo/him.png" alt="Evan">
         </div>
         <div>
-          <div class="evan-sig">Evan</div>
-          <div class="evan-role">商明國際集團總顧問</div>
+          <div class="evan-name-line">
+            <span class="evan-name-zh">楊志忠</span>
+            <img src="https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/BOC%20LP%20Photo/Evanyang.png" alt="Evan Yang" class="evan-sig-img">
+          </div>
+          <div class="evan-role-title">總顧問</div>
+          <div class="evan-role-company">商明國際集團</div>
         </div>
       </div>
     </div>
@@ -1054,7 +1227,7 @@ h2.section-title{font-family:"Noto Serif TC",serif;font-size:clamp(1.8rem,3.5vw,
 
       <div class="event-cta-row reveal delay-3">
         <div style="display:flex;flex-direction:column;align-items:center;gap:.6rem">
-          <a href="https://www.goldentulip-fabhotel.com.tw/" target="_blank" class="btn btn-ghost btn-ghost-sm">優惠訂房服務</a>
+          <a href="https://boptaipei.github.io/2026BOC/booking.html" target="_blank" class="btn btn-ghost btn-ghost-sm">優惠訂房服務</a>
           <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" style="font-size:.62rem;letter-spacing:.2rem;color:rgba(255,255,255,.45);font-weight:400;transition:color .25s;text-transform:uppercase" onmouseover="this.style.color='rgba(255,255,255,.85)'" onmouseout="this.style.color='rgba(255,255,255,.45)'">回到主頁</a>
         </div>
       </div>
@@ -1113,22 +1286,25 @@ document.querySelectorAll('.menu-close-link').forEach(l=>{
   });
 });
 
-/* ===== CUSTOM CURSOR ===== */
+/* ===== CUSTOM CURSOR (僅限滑鼠裝置) ===== */
 const dot=document.getElementById('dot'),ring=document.getElementById('ring');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{
-  mx=e.clientX;my=e.clientY;
-  dot.style.left=mx+'px';dot.style.top=my+'px';
-},{passive:true});
-(function raf(){
-  rx+=(mx-rx)*.1;ry+=(my-ry)*.1;
-  ring.style.left=rx+'px';ring.style.top=ry+'px';
-  requestAnimationFrame(raf);
-})();
-document.querySelectorAll('a,button').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{dot.style.width='18px';dot.style.height='18px';ring.style.width='56px';ring.style.height='56px'});
-  el.addEventListener('mouseleave',()=>{dot.style.width='8px';dot.style.height='8px';ring.style.width='38px';ring.style.height='38px'});
-});
+const isTouch=window.matchMedia('(hover:none) and (pointer:coarse)').matches;
+if(!isTouch){
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{
+    mx=e.clientX;my=e.clientY;
+    dot.style.left=mx+'px';dot.style.top=my+'px';
+  },{passive:true});
+  (function raf(){
+    rx+=(mx-rx)*.1;ry+=(my-ry)*.1;
+    ring.style.left=rx+'px';ring.style.top=ry+'px';
+    requestAnimationFrame(raf);
+  })();
+  document.querySelectorAll('a,button').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{dot.style.width='18px';dot.style.height='18px';ring.style.width='56px';ring.style.height='56px'});
+    el.addEventListener('mouseleave',()=>{dot.style.width='8px';dot.style.height='8px';ring.style.width='38px';ring.style.height='38px'});
+  });
+}
 
 /* ===== SCROLL PROGRESS ===== */
 window.addEventListener('scroll',()=>{
