@@ -1350,6 +1350,10 @@ h2.section-title{font-family:"Noto Serif TC",serif;font-size:clamp(1.8rem,3.5vw,
 </div>
 
 <script>
+if('scrollRestoration' in history){
+  history.scrollRestoration='auto';
+}
+
 /* ===== HAMBURGER MENU ===== */
 const hamburger=document.getElementById('hamburger');
 const mobileMenu=document.getElementById('mobileMenu');
