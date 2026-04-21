@@ -1291,19 +1291,6 @@
        JavaScript 主程式
   ══════════════════════════════════ -->
   <script>
-    if ('scrollRestoration' in history) {
-      history.scrollRestoration = 'manual';
-    }
-    if (window.location.hash) {
-      history.replaceState(null, '', window.location.pathname + window.location.search);
-    }
-    window.addEventListener('pageshow', function() {
-      if (window.location.hash) {
-        history.replaceState(null, '', window.location.pathname + window.location.search);
-      }
-      window.scrollTo(0, 0);
-    });
-
     // ── 房型資料（名稱、特約價、官網原價、名額、圖片、英文名、規格、說明） ──
     const HOTEL_NOTICES = ['所有客房報價均含早餐，並提供免費停車服務。','入住時間 16:00 後，退房時間 11:00 前。','依菸害防治法，本酒店全面禁菸。','價格及內容有所異動時，不再另行通知。','免費提供嬰兒床、嬰兒澡盆及奶瓶消毒鍋（須事先預定）。','除導盲犬外，酒店禁止攜帶寵物進入。','另有無障礙空間設計客房，歡迎提前預訂。','配合政府政策，酒店自 2023/12/1 起不提供一次性拋棄式備品，僅提供浴巾、毛巾、拖鞋、洗沐二合一、潤髮乳。'];
     const ROOM_DATA = [
