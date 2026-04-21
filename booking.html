@@ -18,6 +18,9 @@
   <link rel="icon" type="image/png" href="https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/logo.png">
   <link rel="apple-touch-icon" href="https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/logo.png">
 
+  <!-- 防止 hash 在重整時跳轉：在瀏覽器處理錨點前立即移除 -->
+  <script>if(location.hash)history.replaceState(null,'',location.pathname+location.search);</script>
+
   <!-- ── 字型載入：Google Fonts ── -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -251,8 +254,8 @@
     .rmo-close:hover { background:var(--text); }
     /* 頂部：圖片（高度 clamp 在 260px～460px，以 45vh 為基準） */
     .rmo-carousel { position:relative; flex:0 0 auto; height:clamp(260px, 45vh, 460px); overflow:hidden; background:#e7e1d8; }
-    .rmo-carousel .carousel-track { display:flex; height:100%; transition:transform .42s cubic-bezier(.25,.46,.45,.94); }
-    .rmo-carousel .carousel-slide { min-width:100%; height:100%; overflow:hidden; flex-shrink:0; }
+    .rmo-carousel .carousel-track { position:absolute; inset:0; display:flex; transition:transform .42s cubic-bezier(.25,.46,.45,.94); }
+    .rmo-carousel .carousel-slide { flex:0 0 100%; overflow:hidden; flex-shrink:0; }
     .rmo-carousel .carousel-slide img { width:100%; height:100%; object-fit:cover; display:block; }
     .rmo-carousel .c-dots { position:absolute; bottom:10px; left:50%; transform:translateX(-50%); display:flex; gap:5px; z-index:4; }
     .rmo-carousel .c-dot { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,.5); border:none; cursor:pointer; padding:0; transition:.15s; }
@@ -1291,7 +1294,13 @@
     if ('scrollRestoration' in history) {
       history.scrollRestoration = 'manual';
     }
+    if (window.location.hash) {
+      history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
     window.addEventListener('pageshow', function() {
+      if (window.location.hash) {
+        history.replaceState(null, '', window.location.pathname + window.location.search);
+      }
       window.scrollTo(0, 0);
     });
 
