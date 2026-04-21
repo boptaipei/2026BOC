@@ -18,9 +18,6 @@
   <link rel="icon" type="image/png" href="https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/logo.png">
   <link rel="apple-touch-icon" href="https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/logo.png">
 
-  <!-- 防止 hash 在重整時跳轉：在瀏覽器處理錨點前立即移除 -->
-  <script>if(location.hash)history.replaceState(null,'',location.pathname+location.search);</script>
-
   <!-- ── 字型載入：Google Fonts ── -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1298,6 +1295,10 @@
        JavaScript 主程式
   ══════════════════════════════════ -->
   <script>
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'auto';
+    }
+
     // ── 房型資料（名稱、特約價、官網原價、名額、圖片、英文名、規格、說明） ──
     const HOTEL_NOTICES = ['所有客房報價均含早餐，並提供免費停車服務。','入住時間 16:00 後，退房時間 11:00 前。','依菸害防治法，本酒店全面禁菸。','價格及內容有所異動時，不再另行通知。','免費提供嬰兒床、嬰兒澡盆及奶瓶消毒鍋（須事先預定）。','除導盲犬外，酒店禁止攜帶寵物進入。','另有無障礙空間設計客房，歡迎提前預訂。','配合政府政策，酒店自 2023/12/1 起不提供一次性拋棄式備品，僅提供浴巾、毛巾、拖鞋、洗沐二合一、潤髮乳。'];
     const ROOM_DATA = [
