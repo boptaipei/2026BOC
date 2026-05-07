@@ -4,6 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>2026 商明領袖論壇｜企業躍升的關鍵分水嶺</title>
+<meta property="og:title" content="2026 商明領袖論壇｜企業躍升的關鍵分水嶺">
+<meta property="og:url" content="https://boptaipei.github.io/2026BOC/">
+<meta property="og:description" content="5 位企業主 × 5 種成長關鍵，本次論壇匯聚五位企業主，深度剖析組織發展、團隊治理、商業模式創新等關鍵領域的實戰經驗。透過具體案例揭示如何突破經營瓶頸、優化團隊協作並實現商業版圖擴張。">
+<meta property="og:image" content="https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/og_image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <link rel="icon" type="image/png" href="https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/logo.png">
 <link rel="apple-touch-icon" href="https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/2026%20BOC%20booking/pic/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -70,6 +76,28 @@ body *{cursor:none!important}
 .mobile-menu a{font-size:1.4rem;font-weight:700;color:#fff;letter-spacing:.15rem;transition:color .25s}
 .mobile-menu a:hover{color:var(--yellow)}
 .mobile-menu .btn-nav{font-size:1rem;padding:.8rem 2rem;margin-top:.5rem}
+.mobile-menu-close{
+  position:absolute;
+  top:1.5rem;
+  right:1.5rem;
+  width:44px;
+  height:44px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid rgba(255,255,255,.28);
+  background:transparent;
+  color:#fff;
+  font-size:1.6rem;
+  line-height:1;
+  transition:border-color .25s,color .25s,background .25s,transform .25s;
+}
+.mobile-menu-close:hover{
+  border-color:var(--yellow);
+  color:var(--yellow);
+  background:rgba(255,234,65,.08);
+  transform:translateY(-1px);
+}
 
 /* ================================================
    HERO — 一、版面完整呈現於 100vh
@@ -303,7 +331,7 @@ h2.section-title{font-family:"Noto Serif TC",serif;font-size:clamp(1.8rem,3.5vw,
 .spk-head{
   display:flex;align-items:flex-start;
   justify-content:space-between;
-  gap:.5rem;
+  gap:.75rem;
   padding-bottom:.7rem;
   border-bottom:1px solid var(--line);
   margin-bottom:.1rem;
@@ -313,15 +341,30 @@ h2.section-title{font-family:"Noto Serif TC",serif;font-size:clamp(1.8rem,3.5vw,
   font-size:clamp(2rem,3.2vw,2.8rem);
   font-weight:900;color:var(--black);
   line-height:.95;letter-spacing:.02rem;
-  flex-shrink:0;
+  flex:0 1 auto;
+  min-width:0;
 }
-.spk-right{display:flex;flex-direction:column;align-items:flex-end;gap:.45rem;padding-top:.2rem}
-.spk-company{font-size:.72rem;color:var(--ink-muted);font-weight:500;letter-spacing:.06rem;text-align:right;line-height:1.4}
+.spk-right{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:.45rem;
+  padding-top:.2rem;
+  flex:1 1 0;
+  min-width:0;
+}
+.spk-company{
+  font-size:.72rem;color:var(--ink-muted);font-weight:500;letter-spacing:.06rem;text-align:right;line-height:1.4;
+  width:100%;
+  overflow-wrap:anywhere;
+}
 .spk-skill{
   font-size:.58rem;letter-spacing:.12rem;
   padding:.28rem .7rem;
   background:var(--black);color:var(--yellow);
-  font-weight:700;white-space:nowrap;
+  font-weight:700;white-space:normal;
+  text-align:center;
+  align-self:flex-end;
 }
 
 /* 核心語錄 */
@@ -542,7 +585,7 @@ h2.section-title{font-family:"Noto Serif TC",serif;font-size:clamp(1.8rem,3.5vw,
 .event-section-inner{position:relative;width:100%;aspect-ratio:16/9;min-height:480px;display:flex;flex-direction:column;justify-content:center}
 .event-bg{position:absolute;inset:0;background-image:url('https://14554337.fs1.hubspotusercontent-na2.net/hubfs/14554337/BOC%20LP%20Photo/Photo9.jpg');background-size:cover;background-position:center;z-index:0}
 .event-bg::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.67)}
-.event-section .container{position:relative;z-index:1;padding-top:3rem;padding-bottom:3rem}
+.event-section .container{position:relative;z-index:1;padding-top:3rem;padding-bottom:calc(8rem + env(safe-area-inset-bottom,0px))}
 .event-head{margin-bottom:2rem;text-align:center}
 .event-main-title{font-family:"Noto Serif TC",serif;font-size:clamp(2rem,5vw,4.2rem);font-weight:900;color:#fff;letter-spacing:.1rem;line-height:1;text-align:center}
 .event-subtitle{font-family:"Noto Serif TC",serif;font-size:.95rem;color:rgba(255,255,255,.75);margin-top:.75rem;letter-spacing:.18rem;font-weight:400;text-align:center}
@@ -556,7 +599,17 @@ h2.section-title{font-family:"Noto Serif TC",serif;font-size:clamp(1.8rem,3.5vw,
 .event-cta-row{margin-top:2rem;display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
 
 /* ===== FLOATING BAR ===== */
-.float-bar{position:fixed;bottom:0;left:0;right:0;z-index:999;background:rgba(26,26,26,.97);border-top:1px solid rgba(255,234,65,.3);padding:.7rem 0;backdrop-filter:blur(12px)}
+.float-bar{
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  z-index:999;
+  background:rgba(26,26,26,.97);
+  border-top:1px solid rgba(255,234,65,.3);
+  padding:.7rem 0 calc(.7rem + env(safe-area-inset-bottom,0px));
+  backdrop-filter:blur(12px);
+}
 .float-bar-inner{display:flex;align-items:center;justify-content:space-between;gap:1.2rem;flex-wrap:wrap}
 .float-bar-text{font-size:.78rem;color:rgba(255,255,255,.75);letter-spacing:.05rem;font-weight:300}
 .float-bar-text strong{color:var(--yellow);font-weight:700}
@@ -629,7 +682,29 @@ h2.section-title{font-family:"Noto Serif TC",serif;font-size:clamp(1.8rem,3.5vw,
   .spk-grid{grid-template-columns:1fr 1fr;gap:1rem;padding:0 1.25rem}
   .spk-card:nth-child(n){grid-column:span 1}
   .spk-card:nth-child(1),.spk-card:nth-child(2){grid-column:span 1}
+  .spk-head{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:.45rem;
+  }
   .spk-name{font-size:clamp(1.6rem,6vw,2.2rem)}
+  .spk-right{
+    width:100%;
+    align-items:flex-start;
+    gap:.35rem;
+    padding-top:0;
+  }
+  .spk-company{
+    width:100%;
+    font-size:.68rem;
+    text-align:left;
+  }
+  .spk-skill{
+    font-size:.56rem;
+    padding:.28rem .55rem;
+    align-self:flex-start;
+    text-align:left;
+  }
   .spk-hook{font-size:.88rem}
   .spk-note{padding-left:1.25rem;padding-right:1.25rem}
 
@@ -660,8 +735,10 @@ h2.section-title{font-family:"Noto Serif TC",serif;font-size:clamp(1.8rem,3.5vw,
   .event-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.12)}
   .event-item:last-child{border-bottom:none}
   .event-main-title{font-size:clamp(1.5rem,8vw,2.6rem)}
+  .event-section .container{padding-bottom:calc(9rem + env(safe-area-inset-bottom,0px))}
 
   /* Float bar */
+  .float-bar{padding-bottom:calc(.85rem + env(safe-area-inset-bottom,0px))}
   .float-bar-inner{justify-content:center;text-align:center}
   .float-bar-btn{width:100%}
 
@@ -739,6 +816,8 @@ h2.section-title{font-family:"Noto Serif TC",serif;font-size:clamp(1.8rem,3.5vw,
   .spk-card:nth-child(4){grid-column:2 / span 2}
   .spk-card:nth-child(5){grid-column:3 / span 2}
   .spk-name{font-size:clamp(1.4rem,3.5vw,2rem)}
+  .spk-company{font-size:.68rem}
+  .spk-skill{font-size:.54rem;padding:.26rem .5rem}
   .spk-hook{font-size:.9rem}
   .spk-note{padding-left:2rem;padding-right:2rem}
 
@@ -857,6 +936,7 @@ h2.section-title{font-family:"Noto Serif TC",serif;font-size:clamp(1.8rem,3.5vw,
 
 <!-- Mobile Menu Drawer -->
 <div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" id="mobileMenuClose" aria-label="關閉選單">✕</button>
   <a href="#speakers" class="menu-close-link">講者陣容</a>
   <a href="#register" class="menu-close-link">報名資訊</a>
   <a href="#faq" class="menu-close-link">常見問題</a>
@@ -1270,20 +1350,31 @@ h2.section-title{font-family:"Noto Serif TC",serif;font-size:clamp(1.8rem,3.5vw,
 </div>
 
 <script>
+if('scrollRestoration' in history){
+  history.scrollRestoration='auto';
+}
+
 /* ===== HAMBURGER MENU ===== */
 const hamburger=document.getElementById('hamburger');
 const mobileMenu=document.getElementById('mobileMenu');
+const mobileMenuClose=document.getElementById('mobileMenuClose');
+function openMobileMenu(){
+  hamburger.classList.add('open');
+  mobileMenu.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeMobileMenu(){
+  hamburger.classList.remove('open');
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow='';
+}
 hamburger.addEventListener('click',()=>{
-  hamburger.classList.toggle('open');
-  mobileMenu.classList.toggle('open');
-  document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';
+  if(mobileMenu.classList.contains('open')) closeMobileMenu();
+  else openMobileMenu();
 });
+mobileMenuClose.addEventListener('click',closeMobileMenu);
 document.querySelectorAll('.menu-close-link').forEach(l=>{
-  l.addEventListener('click',()=>{
-    hamburger.classList.remove('open');
-    mobileMenu.classList.remove('open');
-    document.body.style.overflow='';
-  });
+  l.addEventListener('click',closeMobileMenu);
 });
 
 /* ===== CUSTOM CURSOR (僅限滑鼠裝置) ===== */
@@ -1379,3 +1470,4 @@ async function submitForm(e){
 </script>
 </body>
 </html>
+
