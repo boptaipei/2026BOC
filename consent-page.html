@@ -1,0 +1,350 @@
+<!DOCTYPE html><html lang="zh-TW"><head>
+
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>活動影像拍攝與使用告知 — 5/13 商業論壇</title>
+<template id="__bundler_thumbnail" data-bg-color="#fcc800">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#fcc800"/>
+    <polygon points="0,800 0,360 380,800" fill="#ffffff"/>
+    <circle cx="780" cy="180" r="280" fill="#ffffff" opacity="0.85"/>
+    <polygon points="600,300 760,540 440,540" fill="none" stroke="#1A1714" stroke-width="6"/>
+  </svg>
+</template>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&amp;family=Noto+Sans+TC:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #fcc800;
+    --gold-light: #F5E6C0;
+    --gold-dark: #8A6A1F;
+    --black: #1A1714;
+    --ink: #2C2820;
+    --muted: #6B6460;
+    --surface: #FDFAF5;
+    --border: #E8DECA;
+    --accent-bg: #F8F2E6;
+  }
+
+  body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background: var(--surface);
+    color: var(--ink);
+    min-height: 100vh;
+    padding-bottom: 3rem;
+  }
+
+  .hero {
+    background-color: var(--gold);
+    background-image: url('assets/hero-bg.jpg');
+    background-size: 145% auto;
+    background-position: 30% 18%;
+    background-repeat: no-repeat;
+    padding: 2.5rem 2.5rem 2.25rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1.75rem;
+  }
+
+  .brand-logo {
+    height: 44px;
+    width: auto;
+    display: block;
+  }
+
+  .event-tag {
+    display: inline-block;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--black);
+    background: transparent;
+    border: 0;
+    border-bottom: 2px solid var(--black);
+    padding: 0 2px 6px;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  .hero h1 {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--black);
+    line-height: 1.4;
+    margin-bottom: 1rem;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-sub {
+    font-size: 13.5px;
+    color: rgba(26,23,20,0.7);
+    line-height: 1.7;
+    border-left: 2px solid var(--black);
+    padding-left: 12px;
+  }
+
+  .notice-banner {
+    background: var(--gold);
+    padding: 0.9rem 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .notice-banner svg {
+    flex-shrink: 0;
+    width: 18px; height: 18px;
+  }
+
+  .notice-banner p {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--black);
+    letter-spacing: 0.03em;
+  }
+
+  .content {
+    padding: 0 2.25rem;
+  }
+
+  .section {
+    margin-top: 1.75rem;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-num {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: var(--black);
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--black);
+    letter-spacing: 0.03em;
+  }
+
+  .item {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.125rem;
+    margin-bottom: 10px;
+  }
+
+  .item-label {
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--gold-dark);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .item p {
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--ink);
+  }
+
+  .programs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+  }
+
+  .program-tag {
+    font-size: 12px;
+    background: var(--accent-bg);
+    color: var(--gold-dark);
+    border: 1px solid #E0CF9E;
+    padding: 3px 10px;
+    border-radius: 3px;
+    font-weight: 500;
+  }
+
+  .privacy-card {
+    background: var(--accent-bg);
+    border: 1px solid #E0CF9E;
+    border-radius: 8px;
+    padding: 1rem 1.125rem;
+    margin-bottom: 10px;
+  }
+
+  .privacy-card .item-label {
+    color: var(--gold-dark);
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 1.75rem 0;
+  }
+
+  .closing {
+    padding: 0 2.25rem;
+  }
+
+  .closing-box {
+    background: var(--black);
+    border-radius: 10px;
+    padding: 0.75rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 70px;
+  }
+
+  .closing-box p {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 14px;
+    line-height: 1.85;
+    color: rgba(255,255,255,0.75);
+    position: relative;
+    z-index: 1;
+  }
+
+  .closing-box .gold-line {
+    width: 32px;
+    height: 2px;
+    background: var(--gold);
+    margin-bottom: 1rem;
+  }
+
+  .footer {
+    margin-top: 2rem;
+    padding: 0 2.25rem;
+    text-align: center;
+  }
+
+  .footer p {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .footer strong {
+    color: var(--ink);
+  }
+</style>
+</head>
+<body style="background-color: rgb(255, 250, 231);">
+
+<div class="hero" style="background-size: cover; opacity: 2">
+  <div class="brand">
+    <img src="assets/biz-civilization-logo.png" alt="商明國際集團 BIZ-CIVILIZATION INTERNATIONAL LTD." class="brand-logo">
+  </div>
+
+  <div class="event-tag" style="font-size: 20px; letter-spacing: 1px; line-height: 1.5; font-weight: 600">2026 商明領袖論壇</div>
+
+  <h1 style="font-family: &quot;Noto Sans TC&quot;; font-weight: 600; font-size: 32px">活動影像拍攝<br>與使用告知</h1>
+
+  <p class="hero-sub">本次論壇將進行全程攝影與錄影，<br>作為課程記錄及後續推廣使用。</p>
+</div>
+
+<div class="notice-banner" style="background-color: rgb(0, 0, 0); color: rgb(255, 255, 255)">
+  <svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="9" cy="9" r="8" stroke="#ffffff" stroke-width="1.5"></circle>
+    <path d="M9 5v5" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round"></path>
+    <circle cx="9" cy="13" r="0.75" fill="#ffffff"></circle>
+  </svg>
+  <p style="color: rgb(255, 255, 255); letter-spacing: 1px; font-size: 14px">入場即表示您已了解並同意以下說明</p>
+</div>
+
+<div class="content">
+
+  <div class="section">
+    <div class="section-header" style="padding: 0px 0px 12px; margin: 0px 3px 16px 0px">
+      <div class="section-num" style="">1</div>
+      <div class="section-title" style="letter-spacing: 1px; font-size: 20px;">影像用途</div>
+    </div>
+
+    <div class="item">
+      <div class="item-label" style="color: rgb(153, 153, 153);">使用範圍</div>
+      <p style="font-size: 16px">活動期間所拍攝之影像、照片及聲音素材，將由「商明國際股份有限公司」使用於課程紀錄、社群平台、官方網站，及相關教育訓練與行銷推廣活動</p>
+    </div>
+
+    <div class="item">
+      <div class="item-label" style=""><span style="color: rgb(153, 153, 153);">內容忠實承諾</span></div>
+      <p style="font-size: 16px">若涉及您的觀點分享或訪談，我們承諾在編輯過程中保留您發言的原意，確保您的專業形象。</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <div class="section-title" style="font-size: 20px; letter-spacing: 1px;">著作權歸屬</div>
+    </div>
+
+    <div class="item">
+      <p style="font-size: 16px">本活動所產生之影音及攝影著作，著作權歸主辦單位所有，主辦單位享有剪輯、重製及公開播放之權利。</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <div class="section-title" style="font-size: 20px; letter-spacing: 1px;">您的隱私保護</div>
+    </div>
+
+    <div class="privacy-card" style="background-color: rgb(255, 255, 255);">
+      <div class="item-label" style=""><span style="color: rgb(0, 0, 0);"><span style="color: rgb(153, 153, 153);">特殊需求</span></span></div>
+      <p>若您有特殊考量或不希望入鏡，請於報到時主動告知現場工作人員，我們將盡力為您安排適當位置。</p>
+    </div>
+
+    <div class="privacy-card" style="background-color: rgb(255, 255, 255);">
+      <div class="item-label" style=""><span style="color: rgb(0, 0, 0);"><span style="color: rgb(153, 153, 153);">資料保護</span></span></div>
+      <p>本活動所收集之資訊（含影像資料）僅限於上述說明範圍內使用，不作其他用途。</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="divider"></div>
+
+<div class="closing">
+  <div class="closing-box" style="background-color: rgb(253, 200, 3); text-align: center;">
+    <p style="font-family: &quot;Noto Sans TC&quot;; text-align: center; font-weight: 600; font-size: 16px"><span style="color: rgb(0, 0, 0); font-size: 16px; letter-spacing: 1px">我們相信，被記錄的不只是畫面，而是每一位企業主在現場創造的思考、決策與影響力。 每一份素材的使用，都建立在尊重、真實呈現之上。</span></p>
+  </div>
+</div>
+
+<div class="footer">
+  <p style="font-size: 16px">如有任何疑問，請於現場主動告知工作人員<br><strong style="letter-spacing: 2px; font-size: 22px; display: inline-block; padding: 0 11px 3px; border-bottom: 3px solid var(--gold);">感謝您的理解與支持</strong></p>
+</div>
+
+
+
+</body></html>
